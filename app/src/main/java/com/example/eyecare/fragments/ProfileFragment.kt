@@ -17,6 +17,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
 
         val chartCard = view.findViewById<CardView>(R.id.chartCard)
+        val viewMedCard = view.findViewById<CardView>(R.id.viewMedCard)
         val viewChartBtn = view.findViewById<Button>(R.id.viewChartBtn)
         val viewMedBtn = view.findViewById<Button>(R.id.viewMedBtn)
         val addMedBtn = view.findViewById<Button>(R.id.addMedBtn)
@@ -33,6 +34,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val chartFragment = ChartFragment()
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(((view as ViewGroup).parent as View).id, chartFragment, "profileFragment")
+                .addToBackStack(null)
+                .commit()
+        }
+
+        viewMedCard.setOnClickListener {
+            val viewMedicationFragment = ViewMedicationFragment()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(((view as ViewGroup).parent as View).id, viewMedicationFragment, "profileFragment")
+                .addToBackStack(null)
+                .commit()
+        }
+
+        viewMedBtn.setOnClickListener {
+            val viewMedicationFragment = ViewMedicationFragment()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(((view as ViewGroup).parent as View).id, viewMedicationFragment, "profileFragment")
                 .addToBackStack(null)
                 .commit()
         }

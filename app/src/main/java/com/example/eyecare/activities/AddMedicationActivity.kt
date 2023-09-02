@@ -11,7 +11,14 @@ import android.widget.*
 import androidx.cardview.widget.CardView
 import com.example.eyecare.*
 import com.example.eyecare.Notification
+import com.example.eyecare.database.EyecareDatabase
+import com.example.eyecare.database.entities.Medication
+import com.example.eyecare.database.repositories.MedicationRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 
 class AddMedicationActivity : AppCompatActivity() {
@@ -25,13 +32,18 @@ class AddMedicationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_medication)
 
-        val backBtn = findViewById<CardView>(R.id.backBtn)
+        val backBtn = findViewById<ImageView>(R.id.backBtn)
         etMedication= findViewById(R.id.etMedication)
         etDose = findViewById(R.id.etDose)
+        val etMedicationLayout = findViewById<TextInputLayout>(R.id.etMedicationLayout)
+        val etDoseLayout = findViewById<TextInputLayout>(R.id.etDoseLayout)
         val setBtn: Button = findViewById(R.id.setBtn)
         val timeP: TimePicker = findViewById(R.id.timeP)
         val addMedBtn: ImageButton = findViewById(R.id.addMedBtn)
         val addDoseBtn: ImageButton = findViewById(R.id.addDoseBtn)
+
+        val medicationRepository = MedicationRepository(EyecareDatabase.getInstance(this@AddMedicationActivity))
+        val ui = this@AddMedicationActivity
 
         backBtn.setOnClickListener {
             finish()
@@ -48,7 +60,26 @@ class AddMedicationActivity : AppCompatActivity() {
         createNotificationChannel()
 
         setBtn.setOnClickListener {
-            scheduleNotification(etMedication.text.toString(), etDose.text.toString(), timeP)
+            etMedicationLayout.error = null
+            etDoseLayout.error = null
+            //scheduleNotification(etMedication.text.toString(), etDose.text.toString(), timeP)
+
+            if (etMedication.text.toString().isEmpty()){
+                etMedicationLayout.error = "Enter the Medication"
+                return@setOnClickListener
+            }
+
+            if (etDose.text.toString().isEmpty()){
+                etDoseLayout.error = "Enter the Dosage"
+                return@setOnClickListener
+            }
+
+            CoroutineScope(Dispatchers.IO).launch {
+                medicationRepository.insertMedication(Medication(etMedication.text.toString(), etDose.text.toString(), getTime(timeP)))
+            }
+            runOnUiThread {
+                Toast.makeText(this, "Medication Added", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
