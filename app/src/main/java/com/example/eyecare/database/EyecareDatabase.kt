@@ -21,7 +21,7 @@ abstract class EyecareDatabase : RoomDatabase() {
                 return INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     EyecareDatabase::class.java,
-                    "daily_plan_db"
+                    "eyecare_db"
                 ).build().also {
                     INSTANCE = it
                 }
