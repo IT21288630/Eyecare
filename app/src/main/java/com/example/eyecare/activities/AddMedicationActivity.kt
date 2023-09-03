@@ -80,6 +80,7 @@ class AddMedicationActivity : AppCompatActivity() {
             runOnUiThread {
                 Toast.makeText(this, "Medication Added", Toast.LENGTH_LONG).show()
             }
+            finish()
         }
     }
 

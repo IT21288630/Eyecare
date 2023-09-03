@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_arrow_back"
         android:clickable="true"
+        android:layout_marginStart="5dp"
         android:padding="20dp"/>
 
     <ScrollView
@@ -41,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_voice"
                     app:backgroundTint="@color/black"
-                    app:maxImageSize="30dp"
+                    app:maxImageSize="25dp"
                     app:elevation="0dp"
                     android:layout_gravity="top"
                     app:tint="@color/white" />

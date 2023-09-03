@@ -10,6 +10,6 @@ interface MedicationDao {
     @Insert
     suspend fun insertMedication(medication: Medication)
 
-    @Query("SELECT * From DailyPlan")
+    @Query("SELECT * From Medication")
     fun getAllMedications(): List<Medication>
 }
