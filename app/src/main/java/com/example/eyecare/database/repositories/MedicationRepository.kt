@@ -8,4 +8,6 @@ class MedicationRepository(private val db: EyecareDatabase) {
     suspend fun insertMedication(medication: Medication) = db.getMedicationDao().insertMedication(medication)
 
     fun getAllMedications() = db.getMedicationDao().getAllMedications()
+
+    suspend fun deleteMedication(medication: Medication) = db.getMedicationDao().deleteMedication(medication)
 }

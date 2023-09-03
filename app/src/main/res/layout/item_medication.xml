@@ -10,7 +10,7 @@
         style="?attr/materialCardViewFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
+        android:clickable="false"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp">
 
@@ -28,25 +28,24 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="Test"/>
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tvDose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="test"/>
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
 
         <TextView
             android:id="@+id/tvOpt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="end"
             android:layout_marginTop="10dp"
+            android:gravity="center|top|end"
             android:layout_marginEnd="10dp"
             android:clickable="true"
             android:text="&#8942;"

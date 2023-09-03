@@ -4,11 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eyecare.R
+import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.entities.Medication
+import com.example.eyecare.database.repositories.MedicationRepository
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MedicationAdapter(
@@ -31,7 +36,7 @@ class MedicationAdapter(
     suspend fun setData(data: List<Medication>, context: Context) {
         this.data = data
         this.context = context
-        withContext(Dispatchers.Main){
+        withContext(Dispatchers.Main) {
             notifyDataSetChanged()
         }
     }
@@ -49,6 +54,35 @@ class MedicationAdapter(
         holder.apply {
             tvName.text = data[position].name
             tvDose.text = data[position].dose
+
+            tvOpt.setOnClickListener {
+                val popupMenu = PopupMenu(context, tvOpt)
+                popupMenu.apply {
+                    inflate(R.menu.med_option_menu)
+                    show()
+
+
+                }
+
+                popupMenu.setOnMenuItemClickListener {
+                    when (it.itemId) {
+                        R.id.deleteMed -> {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                val medicationRepository =
+                                    MedicationRepository(EyecareDatabase.getInstance(context))
+                                medicationRepository.deleteMedication(data[position])
+
+                                val data = medicationRepository.getAllMedications()
+
+                                setData(data, context)
+                            }
+                        }
+                    }
+                    true
+                }
+
+
+            }
         }
     }
 

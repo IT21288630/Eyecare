@@ -8,9 +8,16 @@
     android:background="@color/background"
     tools:context=".activities.MainActivity">
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/logo"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         android:id="@+id/frame_layout"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -19,8 +26,11 @@
         android:id="@+id/bottomAppBar"
         android:layout_gravity="bottom"
         app:fabCradleMargin="10dp"
+        app:fabAnchorMode="cradle"
+        app:fabAlignmentMode="center"
+        app:elevation="1dp"
         android:backgroundTint="@color/background"
-        app:fabCradleRoundedCornerRadius="50dp">
+        app:fabCradleRoundedCornerRadius="30dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="wrap_content"

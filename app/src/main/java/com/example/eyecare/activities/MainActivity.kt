@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        setCurrentFragment(ProfileFragment())
 
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
