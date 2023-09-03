@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.eyecare.database.daos.MedicationDao
+import com.example.eyecare.database.entities.EmergencyDetails
 import com.example.eyecare.database.entities.Medication
 
-@Database(entities = [Medication::class], version = 1)
+@Database(entities = [Medication::class, EmergencyDetails::class], version = 1)
 abstract class EyecareDatabase : RoomDatabase() {
 
     abstract fun getMedicationDao(): MedicationDao

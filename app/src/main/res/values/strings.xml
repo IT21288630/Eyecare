@@ -9,4 +9,16 @@
     <string name="your_medication">Your Medication</string>
     <string name="add">Add</string>
     <string name="done">Done</string>
+    <!--Thathsara's part start-->
+    <string name="eyeGuardianPageTxtView">Eye Guardian Emergency Service</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="GCD_headingTxt">Let\'s get started</string>
+    <string name="getEmergNameEdtHint">Enter your name (e.g. - Jhon Doe)</string>
+    <string name="GCD_headingTxt2">Now, let\'s add emergency numbers.</string>
+    <string name="GCD_headingTxt3">Add your customized message</string>
+    <string name="edtTxtContNoHint1"> Enter first contact number </string>
+    <string name="edtTxtContNoHint2"> Enter second contact number </string>
+    <string name="edtTxtContNoHint3"> Enter third contact number </string>
+    <string name="navNxtBtnTxt">Next</string>
+    <!--Thathsara's part ends-->
 </resources>
