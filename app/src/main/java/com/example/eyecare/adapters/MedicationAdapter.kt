@@ -15,6 +15,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MedicationAdapter(
     private var data: List<Medication>,
@@ -25,11 +27,13 @@ class MedicationAdapter(
         val tvName: TextView
         val tvDose: TextView
         val tvOpt: TextView
+        val tvTime: TextView
 
         init {
             tvName = itemView.findViewById(R.id.tvName)
             tvDose = itemView.findViewById(R.id.tvDose)
             tvOpt = itemView.findViewById(R.id.tvOpt)
+            tvTime = itemView.findViewById(R.id.tvTime)
         }
     }
 
@@ -55,13 +59,17 @@ class MedicationAdapter(
             tvName.text = data[position].name
             tvDose.text = data[position].dose
 
+            val dt = Date(data[position].time)
+            val sdf = SimpleDateFormat("hh:mm aa")
+            val time: String = sdf.format(dt)
+
+            tvTime.text = time
+
             tvOpt.setOnClickListener {
                 val popupMenu = PopupMenu(context, tvOpt)
                 popupMenu.apply {
                     inflate(R.menu.med_option_menu)
                     show()
-
-
                 }
 
                 popupMenu.setOnMenuItemClickListener {
@@ -80,8 +88,6 @@ class MedicationAdapter(
                     }
                     true
                 }
-
-
             }
         }
     }
