@@ -1,4 +1,4 @@
-package com.example.eyecare.activities
+package com.example.eyecare
 
 import android.app.*
 import android.content.Context
@@ -8,10 +8,8 @@ import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.widget.*
-import com.example.eyecare.*
-import com.example.eyecare.Notification
+import com.example.eyecare.adapters.MedicationAdapter
 import com.example.eyecare.database.EyecareDatabase
-import com.example.eyecare.database.entities.Medication
 import com.example.eyecare.database.repositories.MedicationRepository
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
@@ -19,7 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 
-class AddMedicationActivity : AppCompatActivity() {
+class UpdateMedicationActivity : AppCompatActivity() {
 
     private val RQ_SPEECH_REC = 102
     private val RQ_SPEECH_REC2 = 103
@@ -28,10 +26,10 @@ class AddMedicationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_medication)
+        setContentView(R.layout.activity_update_medication)
 
         val backBtn = findViewById<ImageView>(R.id.backBtn)
-        etMedication= findViewById(R.id.etMedication)
+        etMedication = findViewById(R.id.etMedication)
         etDose = findViewById(R.id.etDose)
         val etMedicationLayout = findViewById<TextInputLayout>(R.id.etMedicationLayout)
         val etDoseLayout = findViewById<TextInputLayout>(R.id.etDoseLayout)
@@ -40,8 +38,17 @@ class AddMedicationActivity : AppCompatActivity() {
         val addMedBtn: ImageButton = findViewById(R.id.addMedBtn)
         val addDoseBtn: ImageButton = findViewById(R.id.addDoseBtn)
 
-        val medicationRepository = MedicationRepository(EyecareDatabase.getInstance(this@AddMedicationActivity))
-        val ui = this@AddMedicationActivity
+        val medicationRepository =
+            MedicationRepository(EyecareDatabase.getInstance(this@UpdateMedicationActivity))
+        val ui = this@UpdateMedicationActivity
+        val adapter = MedicationAdapter(listOf(), ui)
+
+        etMedicationLayout.hint = intent.getStringExtra("name")
+        etDoseLayout.hint = intent.getStringExtra("dose")
+        val date = Date(intent.getLongExtra("time", 0))
+
+        timeP.hour = date.hours
+        timeP.minute = date.minutes
 
         backBtn.setOnClickListener {
             finish()
@@ -62,21 +69,26 @@ class AddMedicationActivity : AppCompatActivity() {
             etDoseLayout.error = null
             //scheduleNotification(etMedication.text.toString(), etDose.text.toString(), timeP)
 
-            if (etMedication.text.toString().isEmpty()){
-                etMedicationLayout.error = "Enter the Medication"
-                return@setOnClickListener
+            if (etMedication.text.toString().isEmpty()) {
+                etMedication.setText(etMedicationLayout.hint)
             }
 
-            if (etDose.text.toString().isEmpty()){
-                etDoseLayout.error = "Enter the Dosage"
-                return@setOnClickListener
+            if (etDose.text.toString().isEmpty()) {
+                etDose.setText(etDoseLayout.hint)
             }
 
             CoroutineScope(Dispatchers.IO).launch {
-                medicationRepository.insertMedication(Medication(etMedication.text.toString(), etDose.text.toString(), getTime(timeP)))
+                medicationRepository.updateMedication(
+                    etMedication.text.toString(),
+                    etDose.text.toString(),
+                    getTime(timeP),
+                    intent.getIntExtra("id", 0)
+                )
+
+                val data = medicationRepository.getAllMedications()
             }
             runOnUiThread {
-                Toast.makeText(this, "Medication Added", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Medication updated", Toast.LENGTH_LONG).show()
             }
             finish()
         }
@@ -97,8 +109,12 @@ class AddMedicationActivity : AppCompatActivity() {
     }
 
     private fun speechInput(RQ_SPEECH_REC: Int, message: String) {
-        if (!SpeechRecognizer.isRecognitionAvailable(this@AddMedicationActivity)) {
-            Toast.makeText(this@AddMedicationActivity, "Speech recognizer not available!", Toast.LENGTH_LONG)
+        if (!SpeechRecognizer.isRecognitionAvailable(this@UpdateMedicationActivity)) {
+            Toast.makeText(
+                this@UpdateMedicationActivity,
+                "Speech recognizer not available!",
+                Toast.LENGTH_LONG
+            )
                 .show()
         } else {
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)

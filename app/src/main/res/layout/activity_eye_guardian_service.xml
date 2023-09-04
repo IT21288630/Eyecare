@@ -22,7 +22,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.eyecare.activities.Fragment_getContactDetails"
+        android:name="com.example.eyecare.fragments.Fragment_getContactDetails"
         android:layout_width="0dp"
         android:layout_height="575dp"
         android:layout_marginStart="16dp"
