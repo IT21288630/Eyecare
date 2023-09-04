@@ -34,7 +34,7 @@ class AddMedicationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_medication)
 
         val backBtn = findViewById<ImageView>(R.id.backBtn)
-        etMedication= findViewById(R.id.etMedication)
+        etMedication = findViewById(R.id.etMedication)
         etDose = findViewById(R.id.etDose)
         val etMedicationLayout = findViewById<TextInputLayout>(R.id.etMedicationLayout)
         val etDoseLayout = findViewById<TextInputLayout>(R.id.etDoseLayout)
@@ -43,9 +43,12 @@ class AddMedicationActivity : AppCompatActivity() {
         val addMedBtn: ImageButton = findViewById(R.id.addMedBtn)
         val addDoseBtn: ImageButton = findViewById(R.id.addDoseBtn)
 
-        val medicationRepository = MedicationRepository(EyecareDatabase.getInstance(this@AddMedicationActivity))
-        val scheduleRepository = ScheduleRepository(EyecareDatabase.getInstance(this@AddMedicationActivity))
+        val medicationRepository =
+            MedicationRepository(EyecareDatabase.getInstance(this@AddMedicationActivity))
+        val scheduleRepository =
+            ScheduleRepository(EyecareDatabase.getInstance(this@AddMedicationActivity))
         val ui = this@AddMedicationActivity
+
 
         backBtn.setOnClickListener {
             finish()
@@ -66,26 +69,30 @@ class AddMedicationActivity : AppCompatActivity() {
             etDoseLayout.error = null
             //scheduleNotification(etMedication.text.toString(), etDose.text.toString(), timeP)
 
-            if (etMedication.text.toString().isEmpty()){
+            if (etMedication.text.toString().isEmpty()) {
                 etMedicationLayout.error = "Enter the Medication"
                 return@setOnClickListener
             }
 
-            if (etDose.text.toString().isEmpty()){
+            if (etDose.text.toString().isEmpty()) {
                 etDoseLayout.error = "Enter the Dosage"
                 return@setOnClickListener
             }
 
             CoroutineScope(Dispatchers.IO).launch {
-                val medication = Medication(etMedication.text.toString(), etDose.text.toString(), getTime(timeP))
+                val medication =
+                    Medication(etMedication.text.toString(), etDose.text.toString(), getTime(timeP))
                 val localDate = LocalDate.now()
 
                 medicationRepository.insertMedication(medication)
                 scheduleRepository.insertToSchedule(Schedule(medication, localDate.toString()))
+
+                val data = medicationRepository.getAllMedications()
+
             }
-            runOnUiThread {
-                Toast.makeText(this, "Medication Added", Toast.LENGTH_LONG).show()
-            }
+
+            Toast.makeText(this, "Medication Added", Toast.LENGTH_LONG).show()
+
             finish()
         }
     }
@@ -106,7 +113,11 @@ class AddMedicationActivity : AppCompatActivity() {
 
     private fun speechInput(RQ_SPEECH_REC: Int, message: String) {
         if (!SpeechRecognizer.isRecognitionAvailable(this@AddMedicationActivity)) {
-            Toast.makeText(this@AddMedicationActivity, "Speech recognizer not available!", Toast.LENGTH_LONG)
+            Toast.makeText(
+                this@AddMedicationActivity,
+                "Speech recognizer not available!",
+                Toast.LENGTH_LONG
+            )
                 .show()
         } else {
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)

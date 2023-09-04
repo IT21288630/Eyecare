@@ -51,4 +51,6 @@ dependencies {
 
     // Charts
     implementation 'com.diogobernardino:williamchart:3.10.1'
+
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }
