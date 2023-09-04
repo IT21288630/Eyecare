@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.Fragment_getContactDetails">
+
+    <TextView
+        android:id="@+id/GCD_headingTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:text="@string/GCD_headingTxt"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/getEmergNameEdtTxt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="@string/getEmergNameEdtHint"
+        android:inputType="text"
+        android:minHeight="50dp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/navNxtBtnGetName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="90dp"
+        android:backgroundTint="#FFC107"
+        android:minHeight="50dp"
+        android:text="Next" />
+
+</LinearLayout>
