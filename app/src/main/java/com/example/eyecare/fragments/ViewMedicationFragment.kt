@@ -30,12 +30,12 @@ class ViewMedicationFragment : Fragment(R.layout.fragment_view_medication) {
         val backBtn = view.findViewById<ImageView>(R.id.backBtn)
         val deleteAllMedBtn = view.findViewById<Button>(R.id.deleteAllMedBtn)
 
+        rvMedications.adapter = medicationAdapter
+        rvMedications.layoutManager = LinearLayoutManager(view.context)
+
         backBtn.setOnClickListener {
             activity?.supportFragmentManager?.popBackStack();
         }
-
-        rvMedications.adapter = medicationAdapter
-        rvMedications.layoutManager = LinearLayoutManager(view.context)
 
         CoroutineScope(Dispatchers.IO).launch {
             val data = medicationRepository.getAllMedications()
@@ -52,7 +52,7 @@ class ViewMedicationFragment : Fragment(R.layout.fragment_view_medication) {
                         medicationRepository.deleteAllMedication()
                         val data = medicationRepository.getAllMedications()
 
-                        withContext(Dispatchers.Main){
+                        withContext(Dispatchers.Main) {
                             medicationAdapter.setData(data, ui)
                         }
                     }
