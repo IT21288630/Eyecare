@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activities.AddMedicationActivity"
-    android:background="@color/background">
+    tools:context=".UpdateMedicationActivity"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/backBtn"
@@ -117,9 +116,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
-                android:text="@string/add"
+                android:text="@string/update"
                 app:cornerRadius="50dp"
-                app:icon="@drawable/ic_add"
+                app:icon="@drawable/ic_edit"
                 app:strokeColor="@color/black" />
         </LinearLayout>
 

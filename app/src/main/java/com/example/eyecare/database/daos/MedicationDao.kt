@@ -16,4 +16,10 @@ interface MedicationDao {
 
     @Delete
     suspend fun deleteMedication(medication: Medication)
+
+    @Query("DELETE From Medication")
+    suspend fun deleteAllMedication()
+
+    @Query("UPDATE Medication SET name = :name, dose = :dose, time = :time WHERE id = :id")
+    suspend fun updateMedication(name: String, dose: String, time: Long, id: Int?)
 }
