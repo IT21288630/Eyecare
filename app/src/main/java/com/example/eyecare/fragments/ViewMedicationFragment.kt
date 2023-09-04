@@ -45,7 +45,11 @@ class ViewMedicationFragment : Fragment(R.layout.fragment_view_medication) {
         }
 
         swipeRefreshLayout.setOnRefreshListener {
-            medicationAdapter.notifyDataSetChanged()
+            CoroutineScope(Dispatchers.IO).launch {
+                val data = medicationRepository.getAllMedications()
+                medicationAdapter.setData(data, ui)
+            }
+
             swipeRefreshLayout.isRefreshing = false
         }
 
