@@ -3,20 +3,23 @@ package com.example.eyecare.activities
 import android.app.*
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.eyecare.*
 import com.example.eyecare.Notification
 import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.entities.Medication
+import com.example.eyecare.database.entities.Schedule
 import com.example.eyecare.database.repositories.MedicationRepository
+import com.example.eyecare.database.repositories.ScheduleRepository
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import java.util.*
 
 class AddMedicationActivity : AppCompatActivity() {
@@ -41,6 +44,7 @@ class AddMedicationActivity : AppCompatActivity() {
         val addDoseBtn: ImageButton = findViewById(R.id.addDoseBtn)
 
         val medicationRepository = MedicationRepository(EyecareDatabase.getInstance(this@AddMedicationActivity))
+        val scheduleRepository = ScheduleRepository(EyecareDatabase.getInstance(this@AddMedicationActivity))
         val ui = this@AddMedicationActivity
 
         backBtn.setOnClickListener {
@@ -73,7 +77,11 @@ class AddMedicationActivity : AppCompatActivity() {
             }
 
             CoroutineScope(Dispatchers.IO).launch {
-                medicationRepository.insertMedication(Medication(etMedication.text.toString(), etDose.text.toString(), getTime(timeP)))
+                val medication = Medication(etMedication.text.toString(), etDose.text.toString(), getTime(timeP))
+                val localDate = LocalDate.now()
+
+                medicationRepository.insertMedication(medication)
+                scheduleRepository.insertToSchedule(Schedule(medication, localDate.toString()))
             }
             runOnUiThread {
                 Toast.makeText(this, "Medication Added", Toast.LENGTH_LONG).show()

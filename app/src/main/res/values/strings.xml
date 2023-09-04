@@ -25,5 +25,6 @@
     <string name="edtTxtContNoHint3"> Enter third contact number </string>
     <string name="navNxtBtnTxt">Next</string>
     <string name="today_schedule">Today Schedule</string>
+    <string name="mark">Mark</string>
     <!--Thathsara's part ends-->
 </resources>

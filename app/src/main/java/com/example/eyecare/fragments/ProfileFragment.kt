@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.eyecare.R
+import com.example.eyecare.TodayScheduleFragment
 import com.example.eyecare.activities.AddMedicationActivity
 
 
@@ -23,6 +24,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val viewChartBtn = view.findViewById<Button>(R.id.viewChartBtn)
         val viewMedBtn = view.findViewById<Button>(R.id.viewMedBtn)
         val addMedBtn = view.findViewById<Button>(R.id.addMedBtn)
+        val viewScheduleCard = view.findViewById<CardView>(R.id.viewScheduleCard)
+        val viewScheduleBtn = view.findViewById<Button>(R.id.viewScheduleBtn)
 
         chartCard.setOnClickListener {
             val chartFragment = ChartFragment()
@@ -59,6 +62,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         addMedBtn.setOnClickListener {
             val intent = Intent(view.context, AddMedicationActivity::class.java)
             startActivity(intent)
+        }
+
+        viewScheduleBtn.setOnClickListener {
+            val todayScheduleFragment = TodayScheduleFragment()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(((view as ViewGroup).parent as View).id, todayScheduleFragment, "profileFragment")
+                .addToBackStack(null)
+                .commit()
+        }
+
+        viewScheduleCard.setOnClickListener {
+            val todayScheduleFragment = TodayScheduleFragment()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(((view as ViewGroup).parent as View).id, todayScheduleFragment, "profileFragment")
+                .addToBackStack(null)
+                .commit()
         }
     }
 }
