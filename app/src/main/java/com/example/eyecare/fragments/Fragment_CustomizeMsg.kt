@@ -1,11 +1,17 @@
 package com.example.eyecare.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import com.example.eyecare.R
+import com.example.eyecare.activities.EmergencyContactModuleActivity
+import com.example.eyecare.activities.EyeGuardianServiceActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +42,25 @@ class Fragment_CustomizeMsg : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_customize_msg, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val btnDone = view.findViewById<Button>(R.id.navDoneBtnCustMsg)
+        val parentActivity = activity as? EyeGuardianServiceActivity
+
+        var emergMsg: String
+
+
+        btnDone?.setOnClickListener(){
+            //From this function you should get the entered details and then load the next fragment
+            emergMsg = view?.findViewById<EditText>(R.id.edtTxtCustomMsg).toString()
+            parentActivity?.saveCustomMsg(emergMsg)
+            //Calling the emergency home page
+            parentActivity?.callEmergHome()
+
+        }
     }
 
     companion object {

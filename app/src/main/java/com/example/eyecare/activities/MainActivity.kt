@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.profile -> {
                     setCurrentFragment(ProfileFragment())
                 }
+                R.id.emerg -> {
+                    val emrgHomeIntent = Intent(this, EmergencyContactModuleActivity::class.java)
+                    startActivity(emrgHomeIntent)
+                }
             }
             true
         }
