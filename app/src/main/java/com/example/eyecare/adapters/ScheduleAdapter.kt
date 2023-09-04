@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 class ScheduleAdapter(
@@ -76,8 +77,21 @@ class ScheduleAdapter(
                             scheduleId
                         )
                     }
-                    val data = scheduleRepository.getSchedule(LocalDate.now().toString())
 
+                    val medication = Medication(
+                        data[position].medication.name,
+                        data[position].medication.dose,
+                        data[position].medication.time
+                    )
+
+                    scheduleRepository.insertToScheduleAfter(
+                        Schedule(
+                            medication,
+                            LocalDate.now().plus(1, ChronoUnit.DAYS).toString()
+                        )
+                    )
+
+                    val data = scheduleRepository.getSchedule(LocalDate.now().toString())
                     setData(data, context)
                 }
 
