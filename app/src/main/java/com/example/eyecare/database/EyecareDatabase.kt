@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.eyecare.database.daos.EmergDetailsDao
 import com.example.eyecare.database.daos.MedicationDao
 import com.example.eyecare.database.daos.ScheduleDao
 import com.example.eyecare.database.entities.EmergencyDetails
@@ -16,6 +17,7 @@ abstract class EyecareDatabase : RoomDatabase() {
     abstract fun getMedicationDao(): MedicationDao
     abstract fun getScheduleDao(): ScheduleDao
 
+    abstract  fun getEmergencyDetails():EmergDetailsDao
     companion object {
         @Volatile
         private var INSTANCE: EyecareDatabase? = null

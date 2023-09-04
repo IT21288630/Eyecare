@@ -12,7 +12,7 @@ interface EmergDetailsDao {
     fun getAll(): List<EmergencyDetails>
 
     @Insert
-    fun insertAll(user: EmergencyDetails)
+    fun insert(user: EmergencyDetails)
 
     @Delete
     fun delete(user: EmergencyDetails)

@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/currentNameTxt" />
 
     <TextView
-        android:id="@+id/currentEmergNoTxt2"
+        android:id="@+id/currentEmergMsgTxt"
         android:layout_width="257dp"
         android:layout_height="77dp"
         android:layout_marginTop="36dp"
@@ -70,7 +70,7 @@
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentEmergNoTxt2"
+        app:layout_constraintTop_toBottomOf="@+id/currentEmergMsgTxt"
         app:strokeColor="@color/black"
         app:strokeWidth="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
