@@ -13,7 +13,6 @@
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="update">Update</string>
-    <!--Thathsara's part start-->
     <string name="eyeGuardianPageTxtView">Eye Guardian Emergency Service</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="GCD_headingTxt">Let\'s get started</string>
@@ -25,5 +24,6 @@
     <string name="edtTxtContNoHint3"> Enter third contact number </string>
     <string name="navNxtBtnTxt">Next</string>
     <string name="addNewEmergDetailBtnTxt">Add New Details</string>
-    <!--Thathsara's part ends-->
+    <string name="today_schedule">Today Schedule</string>
+    <string name="mark">Mark</string>
 </resources>

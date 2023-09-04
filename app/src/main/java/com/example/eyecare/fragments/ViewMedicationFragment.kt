@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.eyecare.R
 import com.example.eyecare.adapters.MedicationAdapter
 import com.example.eyecare.database.EyecareDatabase
@@ -29,17 +30,27 @@ class ViewMedicationFragment : Fragment(R.layout.fragment_view_medication) {
         val rvMedications = view.findViewById<RecyclerView>(R.id.rvMedications)
         val backBtn = view.findViewById<ImageView>(R.id.backBtn)
         val deleteAllMedBtn = view.findViewById<Button>(R.id.deleteAllMedBtn)
+        val swipeRefreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
+
+        rvMedications.adapter = medicationAdapter
+        rvMedications.layoutManager = LinearLayoutManager(view.context)
 
         backBtn.setOnClickListener {
             activity?.supportFragmentManager?.popBackStack();
         }
 
-        rvMedications.adapter = medicationAdapter
-        rvMedications.layoutManager = LinearLayoutManager(view.context)
-
         CoroutineScope(Dispatchers.IO).launch {
             val data = medicationRepository.getAllMedications()
             medicationAdapter.setData(data, ui)
+        }
+
+        swipeRefreshLayout.setOnRefreshListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                val data = medicationRepository.getAllMedications()
+                medicationAdapter.setData(data, ui)
+            }
+
+            swipeRefreshLayout.isRefreshing = false
         }
 
         deleteAllMedBtn.setOnClickListener {
@@ -52,7 +63,7 @@ class ViewMedicationFragment : Fragment(R.layout.fragment_view_medication) {
                         medicationRepository.deleteAllMedication()
                         val data = medicationRepository.getAllMedications()
 
-                        withContext(Dispatchers.Main){
+                        withContext(Dispatchers.Main) {
                             medicationAdapter.setData(data, ui)
                         }
                     }
