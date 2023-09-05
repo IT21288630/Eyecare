@@ -52,7 +52,7 @@ class Fragment_getContactDetails : Fragment() {
 
         btnNextOne?.setOnClickListener(){
             //From this function you should get the entered details and then load the next fragment
-            emergName = view?.findViewById<EditText>(R.id.getEmergNameEdtTxt).toString()
+            emergName = view?.findViewById<EditText>(R.id.getEmergNameEdtTxt)?.text.toString()
             parentActivity?.saveEmergName(emergName)
             //Calling the next fragment
             parentActivity?.callContNumberFrag()

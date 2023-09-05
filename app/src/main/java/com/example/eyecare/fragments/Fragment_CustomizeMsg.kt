@@ -55,7 +55,7 @@ class Fragment_CustomizeMsg : Fragment() {
 
         btnDone?.setOnClickListener(){
             //From this function you should get the entered details and then load the next fragment
-            emergMsg = view?.findViewById<EditText>(R.id.edtTxtCustomMsg).toString()
+            emergMsg = view?.findViewById<EditText>(R.id.edtTxtCustomMsg)?.text.toString()
             parentActivity?.saveCustomMsg(emergMsg)
             //Calling the emergency home page
             parentActivity?.callEmergHome()
