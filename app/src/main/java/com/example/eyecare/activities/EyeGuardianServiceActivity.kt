@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.eyecare.IS_DATALIST_NULL
 import com.example.eyecare.R
 import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.entities.EmergencyDetails
@@ -36,7 +37,7 @@ class EyeGuardianServiceActivity : AppCompatActivity() {
 
 
     }
-    var EmergEntity = EmergencyDetails(emrgName,emrgNo1,emrgNo2,emrgNo3,customMsg)
+    var EmergEntity = EmergencyDetails(id = 0,emrgName,emrgNo1,emrgNo2,emrgNo3,customMsg)
     fun callContNumberFrag(){
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainerView,Fragment_getContactNumbers())
@@ -51,7 +52,7 @@ class EyeGuardianServiceActivity : AppCompatActivity() {
     }
 
     fun callEmergHome(){
-      //  Toast.makeText(this, "Details saved!", Toast.LENGTH_LONG).show()
+
         val emergHomeIntent = Intent(this,EmergencyContactModuleActivity::class.java)
         startActivity(emergHomeIntent)
     }
@@ -71,13 +72,14 @@ class EyeGuardianServiceActivity : AppCompatActivity() {
     }
 
     fun saveAllDetails() = CoroutineScope(Dispatchers.IO).launch {
-        withContext(Dispatchers.IO) {
 
+        withContext(Dispatchers.IO) {
+            IS_DATALIST_NULL.set(false)
             val db = EyecareDatabase.getInstance(this@EyeGuardianServiceActivity)
             val emrgDao = db.getEmergencyDetails()
 
             emrgDao.insert(EmergEntity)
-
+            Toast.makeText(this@EyeGuardianServiceActivity, "Details saved!", Toast.LENGTH_LONG).show()
             }
         }
 }

@@ -16,6 +16,7 @@
         android:layout_marginEnd="40dp"
         android:gravity="center"
         android:text="@string/GCD_headingTxt2"
+        android:textColor="#3E3E3E"
         android:textSize="20sp" />
 
     <EditText
