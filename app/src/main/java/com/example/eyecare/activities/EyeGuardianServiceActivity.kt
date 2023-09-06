@@ -67,19 +67,21 @@ class EyeGuardianServiceActivity : AppCompatActivity() {
     }
 
     fun saveCustomMsg(msg : String){
+        IS_DATALIST_NULL.set(false)
         EmergEntity.emergMsg = msg
          saveAllDetails()
+        Toast.makeText(this, "Details saved!", Toast.LENGTH_LONG).show()
     }
 
     fun saveAllDetails() = CoroutineScope(Dispatchers.IO).launch {
 
         withContext(Dispatchers.IO) {
-            IS_DATALIST_NULL.set(false)
+
             val db = EyecareDatabase.getInstance(this@EyeGuardianServiceActivity)
             val emrgDao = db.getEmergencyDetails()
 
             emrgDao.insert(EmergEntity)
-            Toast.makeText(this@EyeGuardianServiceActivity, "Details saved!", Toast.LENGTH_LONG).show()
+
             }
         }
 }
