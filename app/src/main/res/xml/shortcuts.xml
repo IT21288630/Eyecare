@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <capability
+        android:name="@string/custom_action_emrg_intent"
+        app:queryPatterns="@array/emrgQueries">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.eyecare"
+            android:targetClass="com.example.eyecare.activities.ActivateEmergencyContactActivity" />
+    </capability>
+
+</shortcuts>

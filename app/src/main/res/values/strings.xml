@@ -13,7 +13,6 @@
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="update">Update</string>
-    <!--Thathsara's part start-->
     <string name="eyeGuardianPageTxtView">Eye Guardian Emergency Service</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="GCD_headingTxt">Let\'s get started</string>
@@ -24,7 +23,23 @@
     <string name="edtTxtContNoHint2"> Enter second contact number </string>
     <string name="edtTxtContNoHint3"> Enter third contact number </string>
     <string name="navNxtBtnTxt">Next</string>
+    <string name="addNewEmergDetailBtnTxt">Add New Details</string>
     <string name="today_schedule">Today Schedule</string>
     <string name="mark">Mark</string>
-    <!--Thathsara's part ends-->
+
+    <string name="next">Next</string>
+    <string name="txtMyNameText">My Name</string>
+    <string name="txtMyContactNoText">Emergency contact numbers</string>
+    <string name="txtMyMsgText">Emergency message</string>
+    <string name="dltEmergDetailBtnTxt">Delete details</string>
+    <string name="btnEmrgUpd">Update details</string>
+    <string name="btnUpdEmrgDetailsTxt">Save</string>
+
+    <string name="custom_action_emrg_intent">custom.actions.intent.EMRG_INTENT</string>
+    <string-array name="emrgQueries">
+        <item>Open emergency service in ikea app</item>
+        <item>I Lost vision</item>
+        <item>help I lost vision</item>
+
+    </string-array>
 </resources>

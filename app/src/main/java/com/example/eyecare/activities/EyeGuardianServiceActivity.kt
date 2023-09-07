@@ -1,18 +1,29 @@
 package com.example.eyecare.activities
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import com.example.eyecare.IS_DATALIST_NULL
 import com.example.eyecare.R
+import com.example.eyecare.database.EyecareDatabase
+import com.example.eyecare.database.entities.EmergencyDetails
 import com.example.eyecare.fragments.Fragment_getContactDetails
 import com.example.eyecare.fragments.Fragment_CustomizeMsg
 import com.example.eyecare.fragments.Fragment_getContactNumbers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class EyeGuardianServiceActivity : AppCompatActivity() {
-    private lateinit var emrgName : String
-    private lateinit var emrgNo_1 : String
-    private lateinit var emrgNo_2 : String
-    private lateinit var emrgNo_3 : String
-    private lateinit var customMsg : String
+    private val emrgName : String = "Not assigned"
+    private val emrgNo1 : String = "Not assigned"
+    private val emrgNo2 : String = "Not assigned"
+    private val emrgNo3 : String = "Not assigned"
+    private val customMsg : String = "Not assigned"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eye_guardian_service)
@@ -26,28 +37,51 @@ class EyeGuardianServiceActivity : AppCompatActivity() {
 
 
     }
-
+    var EmergEntity = EmergencyDetails(id = 0,emrgName,emrgNo1,emrgNo2,emrgNo3,customMsg)
     fun callContNumberFrag(){
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainerView,Fragment_getContactNumbers())
             commit()
         }
     }
+    fun callCustomMsgFrag(){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainerView,Fragment_CustomizeMsg())
+            commit()
+        }
+    }
+
+    fun callEmergHome(){
+
+        val emergHomeIntent = Intent(this,EmergencyContactModuleActivity::class.java)
+        startActivity(emergHomeIntent)
+    }
 
     fun saveEmergName(paramName : String){
-        emrgName = paramName
+        EmergEntity.uName = paramName
     }
     fun saveEmergNo(No1 : String,No2 : String,No3 : String){
-        emrgNo_1 = No1
-        emrgNo_2 = No2
-        emrgNo_3 = No3
+        EmergEntity.contNo1 = No1
+        EmergEntity.contNo2 = No2
+        EmergEntity.contNo3 = No3
     }
 
     fun saveCustomMsg(msg : String){
-        customMsg = msg
+        IS_DATALIST_NULL.set(false)
+        EmergEntity.emergMsg = msg
+         saveAllDetails()
+        Toast.makeText(this, "Details saved!", Toast.LENGTH_LONG).show()
     }
 
-    fun saveAllDetails(){
+    fun saveAllDetails() = CoroutineScope(Dispatchers.IO).launch {
 
-    }
+        withContext(Dispatchers.IO) {
+
+            val db = EyecareDatabase.getInstance(this@EyeGuardianServiceActivity)
+            val emrgDao = db.getEmergencyDetails()
+
+            emrgDao.insert(EmergEntity)
+
+            }
+        }
 }

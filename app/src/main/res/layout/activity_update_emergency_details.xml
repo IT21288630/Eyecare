@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.UpdateEmergencyDetailsActivity">
+
+    <TextView
+        android:id="@+id/EG_Heading_txt3"
+        android:layout_width="338dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="@string/eyeGuardianPageTxtView"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMyName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="175dp"
+        android:shadowColor="#4C4B4B"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="6"
+        android:text="@string/txtMyNameText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EG_Heading_txt3" />
+
+    <EditText
+        android:id="@+id/edtEmrgName"
+        android:layout_width="258dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="50dp"
+        android:text=""
+        android:hint=""
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyName2" />
+
+    <TextView
+        android:id="@+id/txtMyContactNo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="51dp"
+        android:shadowColor="#4C4B4B"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="6"
+        android:text="@string/txtMyContactNoText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmrgName" />
+
+    <EditText
+        android:id="@+id/edtEmrgNo1"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="50dp"
+        android:inputType="phone"
+        android:text=""
+        android:hint=""
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyContactNo2" />
+
+    <EditText
+        android:id="@+id/edtEmrgNo2"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="50dp"
+        android:inputType="phone"
+        android:text=""
+        android:hint=""
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmrgNo1" />
+
+    <EditText
+        android:id="@+id/edtEmrgNo3"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="50dp"
+        android:inputType="phone"
+        android:text=""
+        android:hint=""
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmrgNo2" />
+
+    <TextView
+        android:id="@+id/txtMyMsg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="178dp"
+        android:shadowColor="#4C4B4B"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="6"
+        android:text="@string/txtMyMsgText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmrgNo3" />
+
+    <EditText
+        android:id="@+id/edtEmrgUpd"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:minHeight="50dp"
+        android:text=""
+        android:hint=""
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyMsg2" />
+
+    <Button
+        android:id="@+id/btnUpdEmrgDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="90dp"
+        android:backgroundTint="#FEFEFE"
+        android:text="@string/btnUpdEmrgDetailsTxt"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmrgUpd"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
