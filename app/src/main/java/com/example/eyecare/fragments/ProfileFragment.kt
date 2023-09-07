@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.eyecare.R
 import com.example.eyecare.activities.AddMedicationActivity
+import com.example.eyecare.activities.EyeTest
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -21,6 +22,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val viewChartBtn = view.findViewById<Button>(R.id.viewChartBtn)
         val viewMedBtn = view.findViewById<Button>(R.id.viewMedBtn)
         val addMedBtn = view.findViewById<Button>(R.id.addMedBtn)
+        val checkSympBtn = view.findViewById<Button>(R.id.SymtomChecker)
         val viewScheduleCard = view.findViewById<CardView>(R.id.viewScheduleCard)
         val viewScheduleBtn = view.findViewById<Button>(R.id.viewScheduleBtn)
 
@@ -75,6 +77,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 .replace(((view as ViewGroup).parent as View).id, todayScheduleFragment, "profileFragment")
                 .addToBackStack(null)
                 .commit()
+        }
+
+        checkSympBtn.setOnClickListener {
+            val intent = Intent(view.context, EyeTest::class.java)
+            startActivity(intent)
         }
     }
 }
