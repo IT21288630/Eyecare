@@ -24,7 +24,7 @@
             android:clickable="true"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:clickable="true"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"

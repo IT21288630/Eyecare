@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.eyecare.*
@@ -15,6 +16,7 @@ import com.example.eyecare.database.entities.Medication
 import com.example.eyecare.database.entities.Schedule
 import com.example.eyecare.database.repositories.MedicationRepository
 import com.example.eyecare.database.repositories.ScheduleRepository
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -85,10 +87,26 @@ class AddMedicationActivity : AppCompatActivity() {
                 val localDate = LocalDate.now()
 
                 medicationRepository.insertMedication(medication)
-                scheduleRepository.insertToSchedule(Schedule(medication, localDate.toString()))
+                val meds = medicationRepository.getAllMedications()
+                var id: Int?
 
-                val data = medicationRepository.getAllMedications()
+                for (med in meds) {
+                    if (med.name == medication.name) {
+                        id = med.id
 
+                        if (id != null) {
+                            scheduleRepository.insertToSchedule(
+                                Schedule(
+                                    medication.name,
+                                    medication.dose,
+                                    medication.time,
+                                    id,
+                                    localDate.toString()
+                                )
+                            )
+                        }
+                    }
+                }
             }
 
             Toast.makeText(this, "Medication Added", Toast.LENGTH_LONG).show()

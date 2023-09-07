@@ -16,6 +16,7 @@ import com.example.eyecare.UpdateMedicationActivity
 import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.entities.Medication
 import com.example.eyecare.database.repositories.MedicationRepository
+import com.example.eyecare.database.repositories.ScheduleRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -72,6 +73,7 @@ class MedicationAdapter(
             tvTime.text = time
 
             val medicationRepository = MedicationRepository(EyecareDatabase.getInstance(context))
+            val scheduleRepository = ScheduleRepository(EyecareDatabase.getInstance(context))
 
             tvOpt.setOnClickListener {
                 val popupMenu = PopupMenu(context, tvOpt)
@@ -85,6 +87,12 @@ class MedicationAdapter(
                         R.id.deleteMed -> {
                             CoroutineScope(Dispatchers.IO).launch {
                                 medicationRepository.deleteMedication(data[position])
+                                data[position].id?.let { id ->
+                                    scheduleRepository.deleteScheduleItem(
+                                        id
+                                    )
+                                }
+
                                 val data = medicationRepository.getAllMedications()
                                 setData(data, context)
                             }
