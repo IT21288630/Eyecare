@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Fragment_getContactNumbers"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.Fragment_getContactNumbers">
 
     <TextView
         android:id="@+id/GCD_headingTxt"
@@ -19,61 +19,100 @@
         android:textColor="#3E3E3E"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/getContactNo1Edt"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:ems="10"
-        android:autofillHints="@string/edtTxtContNoHint1"
-        android:hint="@string/edtTxtContNoHint1"
-        android:inputType="phone"
-        android:textAlignment="center"
-        android:minHeight="50dp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/getContactNo2Edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:ems="10"
-        android:hint="@string/edtTxtContNoHint2"
-        android:autofillHints="@string/edtTxtContNoHint2"
-        android:inputType="phone"
-        android:textAlignment="center"
-        android:minHeight="50dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:endIconMode="clear_text"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            app:errorEnabled="true">
 
-    <EditText
-        android:id="@+id/getContactNo3Edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:ems="10"
-        android:hint="@string/edtTxtContNoHint3"
-        android:autofillHints="@string/edtTxtContNoHint3"
-        android:inputType="phone"
-        android:textAlignment="center"
-        android:minHeight="50dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/getContactNo1Edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:autofillHints="@string/edtTxtContNoHint1"
+                android:ems="10"
+                android:hint="Enter first contact number"
+                android:inputType="phone"
+                android:minHeight="50dp"
+                android:textAlignment="viewStart" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:endIconMode="clear_text"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/getContactNo2Edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:autofillHints="@string/edtTxtContNoHint2"
+                android:ems="10"
+                android:hint="Enter second contact number"
+                android:inputType="phone"
+                android:minHeight="50dp"
+                android:textAlignment="viewStart" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:padding="10dp"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/getContactNo3Edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:autofillHints="@string/edtTxtContNoHint3"
+                android:ems="10"
+                android:hint="Enter third contact number"
+                android:inputType="phone"
+                android:minHeight="50dp"
+                android:textAlignment="viewStart" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/navNxtBtnContNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="90dp"
+            android:backgroundTint="#FEFEFE"
+            android:minHeight="50dp"
+            android:text="@string/navNxtBtnTxt"
+            app:cornerRadius="50dp"
+            app:icon="@drawable/ic_next"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp" />
+    </LinearLayout>
 
 
-    <Button
-        android:id="@+id/navNxtBtnContNo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="90dp"
-        android:backgroundTint="#FEFEFE"
-        android:minHeight="50dp"
-        android:text="@string/navNxtBtnTxt"
-        app:cornerRadius="50dp"
-        app:strokeColor="@color/black"
-        app:strokeWidth="1dp" />
 
-</LinearLayout>
+
+
+</FrameLayout>
