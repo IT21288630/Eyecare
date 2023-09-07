@@ -19,4 +19,6 @@ class ScheduleRepository(private val db: EyecareDatabase) {
     suspend fun updateScheduleItem(name: String, dose: String, time: String, medId: Int) = db.getScheduleDao().updateScheduleItem(name, dose, time, medId)
 
     suspend fun deleteScheduleItem(medId: Int) = db.getScheduleDao().deleteScheduleItem(medId)
+
+    suspend fun deleteAllScheduleItems() = db.getScheduleDao().deleteAllScheduleItems()
 }

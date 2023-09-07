@@ -13,6 +13,7 @@ import com.example.eyecare.R
 import com.example.eyecare.adapters.MedicationAdapter
 import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.repositories.MedicationRepository
+import com.example.eyecare.database.repositories.ScheduleRepository
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +26,7 @@ class ViewMedicationFragment : Fragment(R.layout.fragment_view_medication) {
         super.onViewCreated(view, savedInstanceState)
 
         val medicationRepository = MedicationRepository(EyecareDatabase.getInstance(view.context))
+        val scheduleRepository = ScheduleRepository(EyecareDatabase.getInstance(view.context))
         val ui = view.context
         val medicationAdapter = MedicationAdapter(listOf(), ui)
         val rvMedications = view.findViewById<RecyclerView>(R.id.rvMedications)
@@ -61,6 +63,8 @@ class ViewMedicationFragment : Fragment(R.layout.fragment_view_medication) {
                 setPositiveButton("Delete", DialogInterface.OnClickListener { dialog, _ ->
                     CoroutineScope(Dispatchers.IO).launch {
                         medicationRepository.deleteAllMedication()
+                        scheduleRepository.deleteAllScheduleItems()
+
                         val data = medicationRepository.getAllMedications()
 
                         withContext(Dispatchers.Main) {
