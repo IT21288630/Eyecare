@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adapters.colorIdentifier">
+    tools:context=".activities.ColorIdentifierActivity">
     <Button
         android:id="@+id/Choose_image"
         android:layout_width="365dp"
@@ -16,6 +16,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/capturePictureButton"
+        android:layout_width="119dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="6dp"
+        android:text="Capture Picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rgbValue"
+        app:layout_constraintTop_toBottomOf="@+id/Choose_image" />
 
     <ImageView
         android:id="@+id/color_display"
