@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
                     val emrgHomeIntent = Intent(this, EmergencyContactModuleActivity::class.java)
                     startActivity(emrgHomeIntent)
                 }
+                R.id.colorIdenitfier ->{
+                    val colorIdentifier = Intent(this,ColorIdentifierActivity::class.java)
+                    startActivity(colorIdentifier)
+                }
             }
             true
         }

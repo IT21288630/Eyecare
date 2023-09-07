@@ -1,4 +1,4 @@
-package com.example.eyecare.adapters
+package com.example.eyecare.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -14,19 +14,24 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.eyecare.R
 
-class colorIdentifier : AppCompatActivity() {
+class ColorIdentifierActivity : AppCompatActivity() {
 
-    var hexValue: TextView? = null
-    var rgbValue: TextView? = null
-    var colordis : TextView? = null
-    val selected_image = findViewById<ImageView>(R.id.selected_image)
-    var color_display: ImageView? = null
-    var rgbcolor: String? = null
-    var hexcolor: String? = null
-    @SuppressLint("MissingInflatedId")
+     lateinit var selected_image : ImageView
+
+
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coloridentifier)
+
+        selected_image = findViewById(R.id.selected_image)
+        var color_display: ImageView? = null
+        var rgbcolor: String? = null
+        var hexcolor: String? = null
+        var hexValue: TextView? = null
+        var rgbValue: TextView? = null
+        var colordis : TextView? = null
+
         val choose_Image = findViewById<Button>(R.id.Choose_image)
         hexValue = findViewById(R.id.hexValue)
         rgbValue = findViewById(R.id.rgbValue)
@@ -105,3 +110,4 @@ class colorIdentifier : AppCompatActivity() {
         }
     }
 }
+
