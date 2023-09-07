@@ -10,11 +10,14 @@ import android.speech.SpeechRecognizer
 import android.widget.*
 import com.example.eyecare.adapters.MedicationAdapter
 import com.example.eyecare.database.EyecareDatabase
+import com.example.eyecare.database.entities.Medication
 import com.example.eyecare.database.repositories.MedicationRepository
+import com.example.eyecare.database.repositories.ScheduleRepository
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import java.util.*
 
 class UpdateMedicationActivity : AppCompatActivity() {
@@ -40,6 +43,8 @@ class UpdateMedicationActivity : AppCompatActivity() {
 
         val medicationRepository =
             MedicationRepository(EyecareDatabase.getInstance(this@UpdateMedicationActivity))
+        val scheduleRepository =
+            ScheduleRepository(EyecareDatabase.getInstance(this@UpdateMedicationActivity))
         val ui = this@UpdateMedicationActivity
         val adapter = MedicationAdapter(listOf(), ui)
 
@@ -85,11 +90,15 @@ class UpdateMedicationActivity : AppCompatActivity() {
                     intent.getIntExtra("id", 0)
                 )
 
-                val data = medicationRepository.getAllMedications()
+                scheduleRepository.updateScheduleItem(
+                    etMedication.text.toString(), etDose.text.toString(),
+                    getTime(timeP).toString(),
+                    intent.getIntExtra("id", 0)
+                )
             }
-            runOnUiThread {
-                Toast.makeText(this, "Medication updated", Toast.LENGTH_LONG).show()
-            }
+
+            Toast.makeText(this, "Medication updated", Toast.LENGTH_LONG).show()
+
             finish()
         }
     }

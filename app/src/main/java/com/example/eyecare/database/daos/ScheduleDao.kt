@@ -1,8 +1,10 @@
 package com.example.eyecare.database.daos
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.eyecare.database.entities.Medication
 import com.example.eyecare.database.entities.Schedule
 
 @Dao
@@ -19,4 +21,10 @@ interface ScheduleDao {
 
     @Query("UPDATE Schedule SET isTaken = :isTaken WHERE scheduleId = :scheduleId")
     suspend fun markAsTaken(isTaken: Boolean, scheduleId: Int?)
+
+    @Query("UPDATE Schedule SET name = :name, dose = :dose, time = :time WHERE medId = :medId")
+    suspend fun updateScheduleItem(name: String, dose: String, time: String, medId: Int)
+
+    @Query("DELETE FROM Schedule WHERE medId = :medId")
+    suspend fun deleteScheduleItem(medId: Int)
 }

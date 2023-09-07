@@ -59,10 +59,10 @@ class ScheduleAdapter(
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         holder.apply {
-            tvName.text = data[position].medication.name
-            tvDose.text = data[position].medication.dose
+            tvName.text = data[position].name
+            tvDose.text = data[position].dose
 
-            val dt = Date(data[position].medication.time)
+            val dt = Date(data[position].time)
             val sdf = SimpleDateFormat("hh:mm aa")
             val time: String = sdf.format(dt)
 
@@ -79,14 +79,17 @@ class ScheduleAdapter(
                     }
 
                     val medication = Medication(
-                        data[position].medication.name,
-                        data[position].medication.dose,
-                        data[position].medication.time
+                        data[position].name,
+                        data[position].dose,
+                        data[position].time
                     )
 
                     scheduleRepository.insertToScheduleAfter(
                         Schedule(
-                            medication,
+                            medication.name,
+                            medication.dose,
+                            medication.time,
+                            data[position].medId,
                             LocalDate.now().plus(1, ChronoUnit.DAYS).toString()
                         )
                     )

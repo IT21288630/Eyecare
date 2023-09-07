@@ -6,6 +6,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.eyecare.adapters.MedicationAdapter
 import com.example.eyecare.adapters.ScheduleAdapter
 import com.example.eyecare.database.EyecareDatabase
@@ -26,6 +27,7 @@ class TodayScheduleFragment : Fragment(R.layout.fragment_today_schedule) {
         val scheduleAdapter = ScheduleAdapter(listOf(), ui)
         val rvSchedule = view.findViewById<RecyclerView>(R.id.rvSchedule)
         val backBtn = view.findViewById<ImageView>(R.id.backBtn)
+        val swipeRefreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
 
         rvSchedule.adapter = scheduleAdapter
         rvSchedule.layoutManager = LinearLayoutManager(view.context)
@@ -37,6 +39,15 @@ class TodayScheduleFragment : Fragment(R.layout.fragment_today_schedule) {
         CoroutineScope(Dispatchers.IO).launch {
             val data = scheduleRepository.getSchedule(LocalDate.now().toString())
             scheduleAdapter.setData(data, ui)
+        }
+
+        swipeRefreshLayout.setOnRefreshListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                val data = scheduleRepository.getSchedule(LocalDate.now().toString())
+                scheduleAdapter.setData(data, ui)
+            }
+
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 }
