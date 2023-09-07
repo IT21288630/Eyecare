@@ -25,6 +25,7 @@ class EmergencyContactModuleActivity : AppCompatActivity() {
 
         val addNewDetailBtn = findViewById<Button>(R.id.addNewEmergDetailBtn)
         val deleteDetailsBtn = findViewById<Button>(R.id.dltEmergDetailBtn)
+        val actEmrgBtn = findViewById<Button>(R.id.btnEmrgAct)
 
         val emergencySetupIntent = Intent(this, EyeGuardianServiceActivity::class.java)
 
@@ -32,6 +33,10 @@ class EmergencyContactModuleActivity : AppCompatActivity() {
             refreshView()
         }
 
+        actEmrgBtn.setOnClickListener(){
+            val updEmrgActIntent = Intent(this@EmergencyContactModuleActivity, ActivateEmergencyContactActivity::class.java)
+            startActivity(updEmrgActIntent)
+        }
 
 
 
