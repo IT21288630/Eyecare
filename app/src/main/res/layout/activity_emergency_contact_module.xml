@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.EmergencyContactModuleActivity">
+
+    <TextView
+        android:id="@+id/EG_Heading_txt2"
+        android:layout_width="338dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="@string/eyeGuardianPageTxtView"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currentNameTxt"
+        android:layout_width="258dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="50dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyName" />
+
+    <TextView
+        android:id="@+id/currentEmergNoTxt"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="50dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyContactNo" />
+
+    <TextView
+        android:id="@+id/currentEmergMsgTxt"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="50dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyMsg" />
+
+    <LinearLayout
+        android:layout_width="415dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="116dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentEmergMsgTxt">
+
+        <Button
+            android:id="@+id/dltEmergDetailBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="#FEFEFE"
+            android:minHeight="50dp"
+            android:text="@string/dltEmergDetailBtnTxt"
+            app:cornerRadius="50dp"
+            app:icon="@drawable/ic_delete"
+            app:iconPadding="4dp"
+            app:strokeColor="@color/Red"
+            app:strokeWidth="1dp" />
+
+        <Button
+            android:id="@+id/addNewEmergDetailBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="#FEFEFE"
+            android:minHeight="50dp"
+            android:text="@string/addNewEmergDetailBtnTxt"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtMyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="175dp"
+        android:shadowColor="#4C4B4B"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="6"
+        android:text="@string/txtMyNameText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EG_Heading_txt2" />
+
+    <TextView
+        android:id="@+id/txtMyMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="175dp"
+        android:shadowColor="#4C4B4B"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="6"
+        android:text="@string/txtMyMsgText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentEmergNoTxt" />
+
+    <TextView
+        android:id="@+id/txtMyContactNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="175dp"
+        android:shadowColor="#4C4B4B"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="6"
+        android:text="@string/txtMyContactNoText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentNameTxt" />
+
+    <Button
+        android:id="@+id/btnEmrgUpd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="90dp"
+        android:backgroundTint="#FEFEFE"
+        android:text="@string/btnEmrgUpd"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentEmergMsgTxt"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

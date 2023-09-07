@@ -6,9 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class EmergencyDetails(
-    @PrimaryKey val uName: String,
-    @ColumnInfo(name = "Contact_no_1") val contNo1: String?,
-    @ColumnInfo(name = "Contact_no_2") val contNo2: String?,
-    @ColumnInfo(name = "Contact_no_3") val contNo3: String?,
-    @ColumnInfo(name = "Emergency_msg") val emergMsg: String?,
+    @PrimaryKey(autoGenerate = true) var id: Long = 0,
+    @ColumnInfo(name = "uName") var uName: String?,
+    @ColumnInfo(name = "Contact_no_1") var contNo1: String?,
+    @ColumnInfo(name = "Contact_no_2") var contNo2: String?,
+    @ColumnInfo(name = "Contact_no_3") var contNo3: String?,
+    @ColumnInfo(name = "Emergency_msg") var emergMsg: String?,
 )
