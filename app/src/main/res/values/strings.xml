@@ -34,4 +34,12 @@
     <string name="dltEmergDetailBtnTxt">Delete details</string>
     <string name="btnEmrgUpd">Update details</string>
     <string name="btnUpdEmrgDetailsTxt">Save</string>
+
+    <string name="custom_action_emrg_intent">custom.actions.intent.EMRG_INTENT</string>
+    <string-array name="emrgQueries">
+        <item>Open emergency service in ikea app</item>
+        <item>I Lost vision</item>
+        <item>help I lost vision</item>
+
+    </string-array>
 </resources>
