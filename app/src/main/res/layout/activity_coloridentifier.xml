@@ -5,37 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ColorIdentifierActivity">
+
+
     <Button
         android:id="@+id/Choose_image"
-        android:layout_width="365dp"
-        android:layout_height="43dp"
+        android:layout_width="154dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="37dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#000000"
         android:text="SelectImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/capturePictureButton"
-        android:layout_width="119dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="6dp"
+        android:layout_width="172dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="37dp"
         android:text="Capture Picture"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rgbValue"
-        app:layout_constraintTop_toBottomOf="@+id/Choose_image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/color_display"
         android:layout_width="66dp"
         android:layout_height="67dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Choose_image" />
 
@@ -43,8 +41,8 @@
         android:id="@+id/hexValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="32dp"
         android:text="Hex value"
         app:layout_constraintStart_toEndOf="@+id/color_display"
         app:layout_constraintTop_toBottomOf="@+id/Choose_image" />
@@ -53,8 +51,8 @@
         android:id="@+id/rgbValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="8dp"
         android:text="R G B value"
         app:layout_constraintStart_toEndOf="@+id/color_display"
         app:layout_constraintTop_toBottomOf="@+id/hexValue" />
@@ -76,7 +74,7 @@
         android:id="@+id/colordis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="12dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/selected_image"
         app:layout_constraintEnd_toEndOf="parent"
