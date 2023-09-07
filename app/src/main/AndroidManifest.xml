@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Eyecare"
         tools:targetApi="31">
         <activity
+            android:name=".adapters.colorIdentifier"
+            android:exported="false" />
+        <activity
             android:name=".activities.EmergencyContactModuleActivity"
             android:exported="false" />
         <activity
