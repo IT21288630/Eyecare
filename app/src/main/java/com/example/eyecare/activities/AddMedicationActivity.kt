@@ -69,7 +69,6 @@ class AddMedicationActivity : AppCompatActivity() {
         setBtn.setOnClickListener {
             etMedicationLayout.error = null
             etDoseLayout.error = null
-            scheduleNotification(etMedication.text.toString(), etDose.text.toString(), timeP)
 
             if (etMedication.text.toString().isEmpty()) {
                 etMedicationLayout.error = "Enter the Medication"
@@ -108,6 +107,8 @@ class AddMedicationActivity : AppCompatActivity() {
                     }
                 }
             }
+
+            scheduleNotification(etMedication.text.toString(), etDose.text.toString(), timeP)
 
             Toast.makeText(this, "Medication Added", Toast.LENGTH_LONG).show()
 
@@ -174,16 +175,6 @@ class AddMedicationActivity : AppCompatActivity() {
             AlarmManager.INTERVAL_DAY,
             pendingIntent
         )
-
-        val date = Date(time)
-        val dateFormat = android.text.format.DateFormat.getLongDateFormat(applicationContext)
-        val timeFormat = android.text.format.DateFormat.getTimeFormat(applicationContext)
-
-        Toast.makeText(
-            applicationContext,
-            "Alarm is a go at " + dateFormat.format(date) + " " + timeFormat.format(date),
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     private fun getTime(timeP: TimePicker): Long {
