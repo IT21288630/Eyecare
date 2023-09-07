@@ -28,7 +28,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:name=".activities.EmergencyContactModuleActivity"
         android:exported="false" />
     <activity
-        android:name=".UpdateMedicationActivity"
+        android:name=".activities.UpdateMedicationActivity"
         android:exported="false" />
     <activity
         android:name=".activities.EyeGuardianServiceActivity"
