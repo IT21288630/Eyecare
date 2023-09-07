@@ -69,7 +69,7 @@ class AddMedicationActivity : AppCompatActivity() {
         setBtn.setOnClickListener {
             etMedicationLayout.error = null
             etDoseLayout.error = null
-            //scheduleNotification(etMedication.text.toString(), etDose.text.toString(), timeP)
+            scheduleNotification(etMedication.text.toString(), etDose.text.toString(), timeP)
 
             if (etMedication.text.toString().isEmpty()) {
                 etMedicationLayout.error = "Enter the Medication"

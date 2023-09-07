@@ -1,4 +1,4 @@
-package com.example.eyecare
+package com.example.eyecare.activities
 
 import android.app.*
 import android.content.Context
@@ -8,16 +8,16 @@ import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.widget.*
+import com.example.eyecare.*
+import com.example.eyecare.Notification
 import com.example.eyecare.adapters.MedicationAdapter
 import com.example.eyecare.database.EyecareDatabase
-import com.example.eyecare.database.entities.Medication
 import com.example.eyecare.database.repositories.MedicationRepository
 import com.example.eyecare.database.repositories.ScheduleRepository
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 import java.util.*
 
 class UpdateMedicationActivity : AppCompatActivity() {

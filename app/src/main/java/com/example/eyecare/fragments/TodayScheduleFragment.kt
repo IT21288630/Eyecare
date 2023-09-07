@@ -1,4 +1,4 @@
-package com.example.eyecare
+package com.example.eyecare.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -7,10 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.eyecare.adapters.MedicationAdapter
+import com.example.eyecare.R
 import com.example.eyecare.adapters.ScheduleAdapter
 import com.example.eyecare.database.EyecareDatabase
-import com.example.eyecare.database.repositories.MedicationRepository
 import com.example.eyecare.database.repositories.ScheduleRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

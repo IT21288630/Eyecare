@@ -7,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eyecare.R
-import com.example.eyecare.UpdateMedicationActivity
+import com.example.eyecare.activities.UpdateMedicationActivity
 import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.entities.Medication
 import com.example.eyecare.database.repositories.MedicationRepository
