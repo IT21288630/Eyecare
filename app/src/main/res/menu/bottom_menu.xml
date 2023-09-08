@@ -7,9 +7,9 @@
         android:title="Profile" />
 
     <item
-        android:id="@+id/blank"
-        android:icon="@drawable/ic_time"
-        android:title="Test" />
+        android:id="@+id/colorIdenitfier"
+        android:icon="@drawable/ic_color_picker"
+        android:title="Color Identifier" />
 
     <item
         android:id="@+id/fab"

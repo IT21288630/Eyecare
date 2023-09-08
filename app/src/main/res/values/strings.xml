@@ -17,7 +17,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="GCD_headingTxt">Let\'s get started</string>
     <string name="getEmergNameEdtHint">Enter your name (e.g. - Jhon Doe)</string>
-    <string name="GCD_headingTxt2">Now, let\'s add emergency numbers.</string>
+    <string name="GCD_headingTxt2">Now, let\'s add emergency mobile numbers.</string>
     <string name="GCD_headingTxt3">Add your customized message</string>
     <string name="edtTxtContNoHint1"> Enter first contact number </string>
     <string name="edtTxtContNoHint2"> Enter second contact number </string>
@@ -36,6 +36,9 @@
     <string name="btnUpdEmrgDetailsTxt">Save</string>
 
     <string name="custom_action_emrg_intent">custom.actions.intent.EMRG_INTENT</string>
+    <string name="activatedHeadTxtLeft">Code</string>
+    <string name="activatedHeadTxtRight">RED</string>
+    <string name="activatedEmrgSubHead">Emergency service has been activated!!</string>
     <string-array name="emrgQueries">
         <item>Open emergency service in ikea app</item>
         <item>I Lost vision</item>
