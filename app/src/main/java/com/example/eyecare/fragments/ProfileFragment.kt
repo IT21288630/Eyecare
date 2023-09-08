@@ -43,8 +43,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             var total = scheduleRepository.getScheduleAll(LocalDate.now().toString()).size
             var taken = scheduleRepository.getScheduleTaken(LocalDate.now().toString()).size
 
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 tvProgress.text = "$taken/$total"
+
+                var progress = taken.toDouble() / total * 100
+                println("Progress = $progress")
+                progressBar.progress = progress.toInt()
+
             }
         }
 
@@ -67,7 +72,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewMedCard.setOnClickListener {
             val viewMedicationFragment = ViewMedicationFragment()
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(((view as ViewGroup).parent as View).id, viewMedicationFragment, "profileFragment")
+                .replace(
+                    ((view as ViewGroup).parent as View).id,
+                    viewMedicationFragment,
+                    "profileFragment"
+                )
                 .addToBackStack(null)
                 .commit()
         }
@@ -75,7 +84,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewMedBtn.setOnClickListener {
             val viewMedicationFragment = ViewMedicationFragment()
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(((view as ViewGroup).parent as View).id, viewMedicationFragment, "profileFragment")
+                .replace(
+                    ((view as ViewGroup).parent as View).id,
+                    viewMedicationFragment,
+                    "profileFragment"
+                )
                 .addToBackStack(null)
                 .commit()
         }
@@ -88,7 +101,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewScheduleBtn.setOnClickListener {
             val todayScheduleFragment = TodayScheduleFragment()
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(((view as ViewGroup).parent as View).id, todayScheduleFragment, "profileFragment")
+                .replace(
+                    ((view as ViewGroup).parent as View).id,
+                    todayScheduleFragment,
+                    "profileFragment"
+                )
                 .addToBackStack(null)
                 .commit()
         }
@@ -96,7 +113,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewScheduleCard.setOnClickListener {
             val todayScheduleFragment = TodayScheduleFragment()
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(((view as ViewGroup).parent as View).id, todayScheduleFragment, "profileFragment")
+                .replace(
+                    ((view as ViewGroup).parent as View).id,
+                    todayScheduleFragment,
+                    "profileFragment"
+                )
                 .addToBackStack(null)
                 .commit()
         }
