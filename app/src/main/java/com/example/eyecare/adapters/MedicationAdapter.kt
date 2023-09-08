@@ -1,6 +1,7 @@
 package com.example.eyecare.adapters
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.entities.Medication
 import com.example.eyecare.database.repositories.MedicationRepository
 import com.example.eyecare.database.repositories.ScheduleRepository
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -83,17 +85,37 @@ class MedicationAdapter(
                 popupMenu.setOnMenuItemClickListener {
                     when (it.itemId) {
                         R.id.deleteMed -> {
-                            CoroutineScope(Dispatchers.IO).launch {
-                                medicationRepository.deleteMedication(data[position])
-                                data[position].id?.let { id ->
-                                    scheduleRepository.deleteScheduleItem(
-                                        id
-                                    )
-                                }
+                            val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
+                            materialAlertDialogBuilder.apply {
+                                setTitle("Confirm")
+                                setMessage("Are you sure that you want to delete \"${data[position].name}\"?")
+                                setPositiveButton(
+                                    "Delete",
+                                    DialogInterface.OnClickListener { dialog, _ ->
+                                        CoroutineScope(Dispatchers.IO).launch {
+                                            medicationRepository.deleteMedication(data[position])
+                                            data[position].id?.let { id ->
+                                                scheduleRepository.deleteScheduleItem(
+                                                    id
+                                                )
+                                            }
 
-                                val data = medicationRepository.getAllMedications()
-                                setData(data, context)
+                                            val data = medicationRepository.getAllMedications()
+                                            setData(data, context)
+                                        }
+
+                                        dialog.dismiss()
+                                    })
+                                setNegativeButton(
+                                    "Cancel",
+                                    DialogInterface.OnClickListener { dialog, _ ->
+                                        dialog.dismiss()
+                                    })
+                                create()
+                                show()
                             }
+
+
                         }
                         R.id.updateMed -> {
                             val intent = Intent(context, UpdateMedicationActivity::class.java)

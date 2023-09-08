@@ -39,6 +39,7 @@
     <string name="activatedHeadTxtLeft">Code</string>
     <string name="activatedHeadTxtRight">RED</string>
     <string name="activatedEmrgSubHead">Emergency service has been activated!!</string>
+    <string name="select_medication">Select Medication</string>
     <string-array name="emrgQueries">
         <item>Open emergency service in ikea app</item>
         <item>I Lost vision</item>

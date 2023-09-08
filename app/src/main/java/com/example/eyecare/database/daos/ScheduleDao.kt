@@ -19,6 +19,12 @@ interface ScheduleDao {
     @Query("SELECT * From Schedule WHERE date = :date AND isTaken = :isTaken")
     fun getSchedule(date: String, isTaken: Boolean): List<Schedule>
 
+    @Query("SELECT * From Schedule WHERE date = :date")
+    fun getScheduleAll(date: String): List<Schedule>
+
+    @Query("SELECT * From Schedule WHERE date = :date AND isTaken = :isTaken")
+    fun getScheduleTaken(date: String, isTaken: Boolean): List<Schedule>
+
     @Query("UPDATE Schedule SET isTaken = :isTaken WHERE scheduleId = :scheduleId")
     suspend fun markAsTaken(isTaken: Boolean, scheduleId: Int?)
 
