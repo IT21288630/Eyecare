@@ -4,80 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FEFEFE"
     tools:context=".activities.ColorIdentifierActivity">
 
-
-    <Button
-        android:id="@+id/Choose_image"
-        android:layout_width="154dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#000000"
-        android:text="SelectImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/capturePictureButton"
-        android:layout_width="172dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="37dp"
-        android:text="Capture Picture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/color_display"
         android:layout_width="66dp"
         android:layout_height="67dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Choose_image" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/hexValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
         android:text="Hex value"
         app:layout_constraintStart_toEndOf="@+id/color_display"
-        app:layout_constraintTop_toBottomOf="@+id/Choose_image" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/rgbValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:text="R G B value"
         app:layout_constraintStart_toEndOf="@+id/color_display"
         app:layout_constraintTop_toBottomOf="@+id/hexValue" />
 
     <ImageView
         android:id="@+id/selected_image"
-        android:layout_width="400dp"
-        android:layout_height="462dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginStart="103dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="103dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colordis"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/colordis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:layout_marginBottom="12dp"
-        android:text="TextView"
+        android:text="Color : Not available yet"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/selected_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/color_display" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selected_image">
+
+        <Button
+            android:id="@+id/Choose_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:layout_marginStart="25dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="25dp"
+            android:backgroundTint="#FEFEFE"
+            android:text="SelectImage"
+            app:icon="@drawable/ic_upload"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp" />
+
+        <Button
+            android:id="@+id/capturePictureButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:icon="@drawable/ic_cam"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="25dp"
+            android:layout_gravity="right"
+            android:backgroundTint="#FEFEFE"
+            android:text="Capture Picture"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:text="Color Identifier"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
+        android:text="Color preview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
