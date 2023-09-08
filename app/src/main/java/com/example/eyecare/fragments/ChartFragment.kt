@@ -35,8 +35,6 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
             for (medication in medications) {
                 names.add(medication.name)
             }
-
-            println(medications)
         }
 
         val adapter = ArrayAdapter(

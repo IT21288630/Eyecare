@@ -5,10 +5,21 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.eyecare.R
 import com.example.eyecare.activities.AddMedicationActivity
+import com.example.eyecare.database.EyecareDatabase
+import com.example.eyecare.database.entities.Schedule
+import com.example.eyecare.database.repositories.MedicationRepository
+import com.example.eyecare.database.repositories.ScheduleRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.time.LocalDate
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -23,6 +34,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val addMedBtn = view.findViewById<Button>(R.id.addMedBtn)
         val viewScheduleCard = view.findViewById<CardView>(R.id.viewScheduleCard)
         val viewScheduleBtn = view.findViewById<Button>(R.id.viewScheduleBtn)
+        val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+        val tvProgress = view.findViewById<TextView>(R.id.tvProgress)
+
+        val scheduleRepository = ScheduleRepository(EyecareDatabase.getInstance(view.context))
+
+        CoroutineScope(Dispatchers.IO).launch {
+            var total = scheduleRepository.getScheduleAll(LocalDate.now().toString()).size
+            var taken = scheduleRepository.getScheduleTaken(LocalDate.now().toString()).size
+
+            withContext(Dispatchers.Main){
+                tvProgress.text = "$taken/$total"
+            }
+        }
 
         chartCard.setOnClickListener {
             val chartFragment = ChartFragment()
