@@ -23,23 +23,32 @@
                 android:clickable="true"
                 android:padding="20dp"/>
 
-            <com.google.android.material.card.MaterialCardView
-                style="?attr/materialCardViewFilledStyle"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="50dp">
+                android:paddingStart="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
 
-                <com.db.williamchart.view.BarChartView
-                    android:id="@+id/barChart"
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/medicationList"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_margin="20dp"
-                    app:chart_barsRadius="20dp"
-                    app:chart_axis="x"
-                    app:chart_spacing="50dp" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_height="wrap_content"
+                    android:hint="@string/select_medication"
+                    android:inputType="none"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.db.williamchart.view.LineChartView
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:chart_axis="x"
+                android:padding="10dp"
+                app:chart_labelsSize="15dp"
+                android:layout_marginTop="50dp"
+                app:chart_lineThickness="1dp"
+                app:chart_smoothLine="true"
+                app:chart_gridEffect="dashed"/>
         </LinearLayout>
     </ScrollView>
 
