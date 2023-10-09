@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout2"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    tools:context=".activities.EyeTrackerMainActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="33dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="314dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:includeFontPadding="true"
+            android:text="Discover Your Eye Illness"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textColorHint="#F6F2F2"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.381"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="297dp"
+            android:layout_height="363dp"
+            android:background="@drawable/ic_eye_test_img"
+            android:backgroundTint="#9FD0F7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.513"
+            app:srcCompat="@drawable/ic_eye_test"
+            tools:layout_conversion_absoluteHeight="438dp"
+            tools:layout_conversion_absoluteWidth="362dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+
+        <Button
+
+
+            android:id="@+id/Startbutton"
+            android:layout_width="227dp"
+            android:layout_height="68dp"
+            android:text="get started"
+            android:textColor="@color/white"
+            app:cornerRadius="30dp"
+            app:iconTint="#FFFDFD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0.195"
+            tools:ignore="NotSibling"
+            tools:layout_conversion_absoluteHeight="76dp"
+            tools:layout_conversion_absoluteWidth="217dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
