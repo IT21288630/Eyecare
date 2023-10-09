@@ -1,0 +1,69 @@
+ [
+    {
+      "name": "Conjunctivitis (Pink Eye)",
+      "symptoms": ["Redness", "itching", "irritation", "tearing", "discharge", "sensitivity to light"],
+      "cause": ["Bacteria", "Viruses", "Chemicals", "Allergies"],
+      "des": ["Relief methods: ", "Omega-3 fatty acids in the diet", "Castor oil eye drops", "Acupuncture therapy"]
+    },
+    {
+      "name": "Dry Eye Syndrome",
+      "symptoms": ["Dryness", "burning sensation", "redness", "gritty feeling", "blurred vision", "sensitivity to light"],
+      "cause": ["Poor blinking habits", "Dry, indoor environment", "Contact lenses", "Certain medications"],
+      "des": ["Relief Methods: ", "Omega-3 fatty acids in the diet", "Castor oil eye drops", "Acupuncture therapy"]
+    },
+    {
+      "name": "Glaucoma",
+      "symptoms": ["Gradual loss of peripheral vision", "tunnel vision", "eye pain", "blurred vision", "halos around lights", "nausea", "vomiting"],
+      "cause": ["Chronic, progressive eye disease", "Damage to the optic nerve", "Eye pressure abnormalities"],
+      "des": ["Recommended Action:", "Seeing a doctor within 24-48 hours"]
+    },
+    {
+      "name": "Cataracts",
+      "symptoms": ["blurred vision", "faded colors", "sensitivity to glare", "halos around lights", "poor night vision", "frequent prescription changes"],
+      "cause": ["Age-related", "Traumatic", "Radiation exposure"],
+      "des": ["Progression:", "Typically starts affecting vision after age 60", "Surgery is the primary treatment"]
+    },
+    {
+      "name": "Macular Degeneration",
+      "symptoms": ["Gradual loss of central vision", "distortion of straight lines", "difficulty recognizing faces"],
+      "cause": ["Combination of genetic and environmental factors", "Development with age"],
+      "des": ["Management:", "No way to reverse dry macular degeneration", "Early diagnosis allows for steps to slow its progression (vitamin supplements, healthy diet, not smoking"]
+    },
+    {
+      "name": "Astigmatism",
+      "symptoms": ["Blurred vision", "EyeStrain", "difficulty seeing clearly in low light", "Headaches"],
+      "cause": ["Cornea or lens with a different shape than normal", "Refractive error due to light bending differently"],
+      "des": ["Treatments:", "Laser surgery can fully correct astigmatism, reducing or eliminating the need for prescription lenses"]
+    },
+    {
+      "name": "Nystagmus",
+      "symptoms": ["Involuntary and rapid eye movements", "dizziness", "sudden decrease in vision", "depth perception problems"],
+      "cause": ["Usually results from diseases affecting inner ear balance mechanisms or the brain (brainstem or cerebellum", "May be inherited"],
+      "des": ["Managments:", "Glasses, contact lenses, or rarely, surgery"]
+    },
+    {
+      "name": "Amblyopia (Lazy Eye)",
+      "symptoms": ["Reduced vision in one eye", "crossed eyes", "eyes not moving together", "depth perception problems"],
+      "cause": ["Imbalance in eye muscles", "Crossed or turned-out eyes"],
+      "des": ["Should begin as soon as possible, ideally before age 7", "Effective treatment even beyond age 7, but earlier treatment is better", "Consult a doctor for treatment options"]
+    },
+    {
+      "name": "Blepharitis",
+      "symptoms": ["Redness", "Itching", "burning sensation", "crusting of eyelashes", "swelling eyelids"],
+      "cause": ["Excess bacteria", "Blocked oil gland on the eyelid", "Hormone problems", "Allergies", "Infection with a virus", "Skin conditions (seborrheic dermatitis, rosacea, eczema)", "Tiny insects called mites"],
+      "des": ["Treatments: ", "Softening crusts with a warm compress", "Cleaning the lid with dilute baby shampoo (2-4 times daily)"]
+    },
+    {
+      "name": "Keratitis",
+      "symptoms": ["eye pain", "sensitivity to light", "tearing", "redness", "feeling like there's something in the eye", "blurred vision"],
+      "cause": ["Noninfectious keratitis (minor injuries, foreign body in the eyes"],
+      "des": ["Recommended Action: ", "Seeing a doctor within 24-48 hours"]
+    },
+    {
+      "name": "Uveitis",
+      "symptoms": ["Redness", "sensitivity to light", "eye pain", "sudden decrease in vision", "blurred vision"],
+      "cause": ["Infection, injury, autoimmune, or inflammatory disease"],
+      "des": ["Consequences: ", "Can cause permanent sight loss without treatment", "Early diagnosis and treatment are essential to prevent vision impairment"]
+    }
+  ]
+
