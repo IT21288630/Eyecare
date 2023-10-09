@@ -11,6 +11,9 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.eyecare.R
 import com.example.eyecare.activities.AddMedicationActivity
+import com.example.eyecare.activities.DisplaySymptomActivity
+import com.example.eyecare.activities.EyeTrackerMainActivity
+import com.example.eyecare.activities.TestResultList
 import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.entities.Schedule
 import com.example.eyecare.database.repositories.MedicationRepository
@@ -36,6 +39,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val viewScheduleBtn = view.findViewById<Button>(R.id.viewScheduleBtn)
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
         val tvProgress = view.findViewById<TextView>(R.id.tvProgress)
+        val sympcheck = view.findViewById<Button>(R.id.SymtomChecker)
+        val symptestResult = view.findViewById<Button>(R.id.view_testResults)
 
         val scheduleRepository = ScheduleRepository(EyecareDatabase.getInstance(view.context))
 
@@ -120,6 +125,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 )
                 .addToBackStack(null)
                 .commit()
+        }
+        sympcheck.setOnClickListener {
+            val intent = Intent(view.context, EyeTrackerMainActivity::class.java)
+            startActivity(intent)
+        }
+
+        symptestResult.setOnClickListener {
+            val intent = Intent(view.context, TestResultList::class.java)
+            startActivity(intent)
         }
     }
 }
