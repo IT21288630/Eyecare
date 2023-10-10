@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/ic_person"
-        android:title="Profile" />
+        android:id="@+id/medicationIcon"
+        android:icon="@drawable/ic_medication"
+        android:title="Medication" />
 
     <item
         android:id="@+id/colorIdenitfier"
@@ -17,9 +17,9 @@
         android:title="" />
 
     <item
-        android:id="@+id/home"
-        android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:id="@+id/EyeHealthTracker"
+        android:icon="@drawable/ic_eye"
+        android:title="Eye Health Tracker" />
     <item
         android:id="@+id/emerg"
         android:icon="@drawable/ic_emerg_alert"
