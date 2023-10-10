@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.eyecare.R
 import com.example.eyecare.activities.AddMedicationActivity
+import com.example.eyecare.activities.ColorIdentifierActivity
 import com.example.eyecare.activities.DisplaySymptomActivity
 import com.example.eyecare.activities.EyeTrackerMainActivity
 import com.example.eyecare.activities.TestResultList
@@ -41,6 +42,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val tvProgress = view.findViewById<TextView>(R.id.tvProgress)
         val sympcheck = view.findViewById<Button>(R.id.SymtomChecker)
         val symptestResult = view.findViewById<Button>(R.id.view_testResults)
+        val colorIdentifierBtn = view.findViewById<Button>(R.id.viewColorIdentifierBtn)
 
         val scheduleRepository = ScheduleRepository(EyecareDatabase.getInstance(view.context))
 
@@ -133,6 +135,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         symptestResult.setOnClickListener {
             val intent = Intent(view.context, TestResultList::class.java)
+            startActivity(intent)
+        }
+
+        colorIdentifierBtn.setOnClickListener{
+            val intent = Intent(view.context, ColorIdentifierActivity::class.java)
             startActivity(intent)
         }
     }

@@ -64,14 +64,14 @@ class ColorIdentifierActivity : AppCompatActivity() {
                 val g = touchColor shr 8 and 0xFF
                 val b = touchColor shr 0 and 0xFF
                 rgbcolor = "$r,$g,$b,"
-                rgbValue?.setText("RGB  $rgbcolor")
+                rgbValue?.setText("RGB Value:  $rgbcolor")
                 hexcolor = Integer.toHexString(touchColor)
                 if (hexcolor?.length!! > 2) {
                     hexcolor = hexcolor?.substring(2, hexcolor?.length!!)
                 }
                 if (action == MotionEvent.ACTION_UP) {
                     color_display?.setBackgroundColor(touchColor)
-                    hexValue?.setText("HEX  $hexcolor")
+                    hexValue?.setText("HEX Value:  $hexcolor")
 
                     // Determine color name based on the RGB values
                     val colorName = getColorName(touchColor)

@@ -33,12 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                /*R.id.home -> {
-                    setCurrentFragment(AddMedicationFragment())
-                    Toast.makeText(this@MainActivity, "Home selected", Toast.LENGTH_LONG).show()
-                }*/
-                R.id.profile -> {
-                    setCurrentFragment(ProfileFragment())
+                R.id.medicationIcon -> {
+                    val intent = Intent(this, AddMedicationActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.EyeHealthTracker -> {
+                    val Intent = Intent(this, TestResultList::class.java)
+                    startActivity(Intent)
                 }
                 R.id.emerg -> {
                     val emrgHomeIntent = Intent(this, EmergencyContactModuleActivity::class.java)
