@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 class TodayScheduleFragment : Fragment(R.layout.fragment_today_schedule) {
 
@@ -36,13 +37,13 @@ class TodayScheduleFragment : Fragment(R.layout.fragment_today_schedule) {
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            val data = scheduleRepository.getSchedule(LocalDate.now().toString())
+            val data = scheduleRepository.getSchedule(LocalDate.now().toString() + "%")
             scheduleAdapter.setData(data, ui)
         }
 
         swipeRefreshLayout.setOnRefreshListener {
             CoroutineScope(Dispatchers.IO).launch {
-                val data = scheduleRepository.getSchedule(LocalDate.now().toString())
+                val data = scheduleRepository.getSchedule(LocalDate.now().toString() + "%")
                 scheduleAdapter.setData(data, ui)
             }
 

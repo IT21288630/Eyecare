@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ChartFragment">
 
     <ScrollView
@@ -19,22 +19,208 @@
                 android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_back"
                 android:clickable="true"
-                android:padding="20dp"/>
+                android:padding="20dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/viewScheduleCard"
+                style="?attr/materialCardViewFilledStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:drawableStart="@drawable/ic_event"
+                        android:drawablePadding="10dp"
+                        android:text="@string/adherence_summary"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvOnTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:text="@string/taken_on_time"
+                            android:textSize="18sp" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="10dp">
+
+                            <ProgressBar
+                                android:id="@+id/progressBarOnTime"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:indeterminateOnly="false"
+                                android:progress="0"
+                                android:progressDrawable="@drawable/progress_circle2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvProgressOnTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/progressBarOnTime"
+                                app:layout_constraintStart_toStartOf="@+id/progressBarOnTime"
+                                app:layout_constraintTop_toTopOf="@+id/progressBarOnTime" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvLate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:text="Late Doses"
+                            android:textSize="18sp" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="10dp">
+
+                            <ProgressBar
+                                android:id="@+id/progressBarLate"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:indeterminateOnly="false"
+                                android:progress="0"
+                                android:progressDrawable="@drawable/progress_circle3"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvProgressLate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/progressBarLate"
+                                app:layout_constraintStart_toStartOf="@+id/progressBarLate"
+                                app:layout_constraintTop_toTopOf="@+id/progressBarLate" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvMissed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:text="@string/missed_doses"
+                            android:textSize="18sp" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="10dp">
+
+                            <ProgressBar
+                                android:id="@+id/progressBarMissed"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:indeterminateOnly="false"
+                                android:progress="0"
+                                android:progressDrawable="@drawable/progress_circle4"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvProgressMissed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/progressBarMissed"
+                                app:layout_constraintStart_toStartOf="@+id/progressBarMissed"
+                                app:layout_constraintTop_toTopOf="@+id/progressBarMissed" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/frequency"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+                android:paddingStart="20dp">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/medicationList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/select_medication"
-                    android:inputType="none"/>
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,13 +228,13 @@
                 android:id="@+id/lineChart"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:chart_axis="x"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="100dp"
                 android:padding="10dp"
+                app:chart_axis="x"
                 app:chart_labelsSize="15dp"
-                android:layout_marginTop="50dp"
                 app:chart_lineThickness="1dp"
-                app:chart_smoothLine="true"
-                app:chart_gridEffect="dashed"/>
+                app:chart_smoothLine="false" />
         </LinearLayout>
     </ScrollView>
 

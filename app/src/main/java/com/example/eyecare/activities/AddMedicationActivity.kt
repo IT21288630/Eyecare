@@ -22,6 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 
 class AddMedicationActivity : AppCompatActivity() {
@@ -83,7 +84,7 @@ class AddMedicationActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 val medication =
                     Medication(etMedication.text.toString(), etDose.text.toString(), getTime(timeP))
-                val localDate = LocalDate.now()
+                val localDate = LocalDateTime.now()
 
                 medicationRepository.insertMedication(medication)
                 val meds = medicationRepository.getAllMedications()
@@ -169,10 +170,9 @@ class AddMedicationActivity : AppCompatActivity() {
 
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val time = getTime(timeP)
-        alarmManager.setRepeating(
+        alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             time,
-            AlarmManager.INTERVAL_DAY,
             pendingIntent
         )
     }

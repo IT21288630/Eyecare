@@ -20,12 +20,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import java.util.*
 
 class ScheduleAdapter(
-    private var data: List<Schedule>,
-    private var context: Context
+    private var data: List<Schedule>, private var context: Context
 ) : RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
 
 
@@ -79,9 +79,7 @@ class ScheduleAdapter(
                     }
 
                     val medication = Medication(
-                        data[position].name,
-                        data[position].dose,
-                        data[position].time
+                        data[position].name, data[position].dose, data[position].time
                     )
 
                     scheduleRepository.insertToScheduleAfter(
@@ -90,7 +88,7 @@ class ScheduleAdapter(
                             medication.dose,
                             medication.time,
                             data[position].medId,
-                            LocalDate.now().plus(1, ChronoUnit.DAYS).toString()
+                            LocalDateTime.now().plus(1, ChronoUnit.DAYS).toString()
                         )
                     )
 

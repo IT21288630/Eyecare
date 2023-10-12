@@ -16,6 +16,8 @@ class ScheduleRepository(private val db: EyecareDatabase) {
 
     fun getScheduleAll(date: String) = db.getScheduleDao().getScheduleAll(date)
 
+    fun getScheduleForChart() = db.getScheduleDao().getScheduleForChart()
+
     fun getScheduleTaken(date: String) = db.getScheduleDao().getScheduleTaken(date, true)
 
     suspend fun markAsTaken(scheduleID: Int) = db.getScheduleDao().markAsTaken(true, scheduleID)

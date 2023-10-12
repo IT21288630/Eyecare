@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.medicationIcon -> {
-                    val intent = Intent(this, AddMedicationActivity::class.java)
-                    startActivity(intent)
+                    setCurrentFragment(ProfileFragment())
                 }
                 R.id.EyeHealthTracker -> {
                     val Intent = Intent(this, TestResultList::class.java)
