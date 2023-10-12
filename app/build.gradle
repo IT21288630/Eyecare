@@ -51,6 +51,9 @@ dependencies {
 
     // Charts
     implementation 'com.diogobernardino:williamchart:3.10.1'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.X.X"
+
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 

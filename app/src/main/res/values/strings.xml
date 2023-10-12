@@ -29,8 +29,8 @@
 
     <string name="next">Next</string>
     <string name="txtMyNameText">My Name</string>
-    <string name="txtMyContactNoText">Emergency contact numbers</string>
-    <string name="txtMyMsgText">Emergency message</string>
+    <string name="txtMyContactNoText">Emergency Contact Numbers</string>
+    <string name="txtMyMsgText">Emergency Message</string>
     <string name="dltEmergDetailBtnTxt">Delete details</string>
     <string name="btnEmrgUpd">Update details</string>
     <string name="btnUpdEmrgDetailsTxt">Save</string>
@@ -38,8 +38,12 @@
     <string name="custom_action_emrg_intent">custom.actions.intent.EMRG_INTENT</string>
     <string name="activatedHeadTxtLeft">Code</string>
     <string name="activatedHeadTxtRight">RED</string>
-    <string name="activatedEmrgSubHead">Emergency service has been activated!!</string>
+    <string name="activatedEmrgSubHead">Emergency Service Has Been Activated!!</string>
     <string name="select_medication">Select Medication</string>
+    <string name="frequency">Intake Frequency</string>
+    <string name="adherence_summary">Adherence Summary</string>
+    <string name="taken_on_time">Taken on Time</string>
+    <string name="missed_doses">Missed Doses</string>
     <string-array name="emrgQueries">
         <item>Open emergency service in ikea app</item>
         <item>I Lost vision</item>

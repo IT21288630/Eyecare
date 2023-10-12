@@ -2,6 +2,7 @@ package com.example.eyecare.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
@@ -12,6 +13,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.eyecare.R
 
 
@@ -38,9 +41,14 @@ class ColorIdentifierActivity : AppCompatActivity() {
         val capturePictureButton = findViewById<Button>(R.id.capturePictureButton)
 
         capturePictureButton.setOnClickListener {
-            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            if (takePictureIntent.resolveActivity(packageManager) != null) {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+
+            if (ContextCompat.checkSelfPermission(this@ColorIdentifierActivity, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this@ColorIdentifierActivity, arrayOf(android.Manifest.permission.CAMERA), REQUEST_IMAGE_CAPTURE)
+            } else {
+                val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                if (takePictureIntent.resolveActivity(packageManager) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                }
             }
         }
 
@@ -64,14 +72,14 @@ class ColorIdentifierActivity : AppCompatActivity() {
                 val g = touchColor shr 8 and 0xFF
                 val b = touchColor shr 0 and 0xFF
                 rgbcolor = "$r,$g,$b,"
-                rgbValue?.setText("RGB  $rgbcolor")
+                rgbValue?.setText("RGB Value:  $rgbcolor")
                 hexcolor = Integer.toHexString(touchColor)
                 if (hexcolor?.length!! > 2) {
                     hexcolor = hexcolor?.substring(2, hexcolor?.length!!)
                 }
                 if (action == MotionEvent.ACTION_UP) {
                     color_display?.setBackgroundColor(touchColor)
-                    hexValue?.setText("HEX  $hexcolor")
+                    hexValue?.setText("HEX Value:  $hexcolor")
 
                     // Determine color name based on the RGB values
                     val colorName = getColorName(touchColor)

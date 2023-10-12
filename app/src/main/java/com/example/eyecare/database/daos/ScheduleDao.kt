@@ -16,13 +16,16 @@ interface ScheduleDao {
     @Insert
     suspend fun insertToScheduleAfter(schedule: Schedule)
 
-    @Query("SELECT * From Schedule WHERE date = :date AND isTaken = :isTaken")
+    @Query("SELECT * From Schedule WHERE date LIKE :date AND isTaken = :isTaken")
     fun getSchedule(date: String, isTaken: Boolean): List<Schedule>
 
-    @Query("SELECT * From Schedule WHERE date = :date")
+    @Query("SELECT * From Schedule WHERE date LIKE :date")
     fun getScheduleAll(date: String): List<Schedule>
 
-    @Query("SELECT * From Schedule WHERE date = :date AND isTaken = :isTaken")
+    @Query("SELECT * From Schedule")
+    fun getScheduleForChart(): List<Schedule>
+
+    @Query("SELECT * From Schedule WHERE date LIKE :date AND isTaken = :isTaken")
     fun getScheduleTaken(date: String, isTaken: Boolean): List<Schedule>
 
     @Query("UPDATE Schedule SET isTaken = :isTaken WHERE scheduleId = :scheduleId")

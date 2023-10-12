@@ -11,6 +11,10 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.eyecare.R
 import com.example.eyecare.activities.AddMedicationActivity
+import com.example.eyecare.activities.ColorIdentifierActivity
+import com.example.eyecare.activities.DisplaySymptomActivity
+import com.example.eyecare.activities.EyeTrackerMainActivity
+import com.example.eyecare.activities.TestResultList
 import com.example.eyecare.database.EyecareDatabase
 import com.example.eyecare.database.entities.Schedule
 import com.example.eyecare.database.repositories.MedicationRepository
@@ -36,18 +40,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val viewScheduleBtn = view.findViewById<Button>(R.id.viewScheduleBtn)
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
         val tvProgress = view.findViewById<TextView>(R.id.tvProgress)
+        val sympcheck = view.findViewById<Button>(R.id.SymtomChecker)
+        val symptestResult = view.findViewById<Button>(R.id.view_testResults)
+        val colorIdentifierBtn = view.findViewById<Button>(R.id.viewColorIdentifierBtn)
 
         val scheduleRepository = ScheduleRepository(EyecareDatabase.getInstance(view.context))
 
         CoroutineScope(Dispatchers.IO).launch {
-            var total = scheduleRepository.getScheduleAll(LocalDate.now().toString()).size
-            var taken = scheduleRepository.getScheduleTaken(LocalDate.now().toString()).size
+            var total = scheduleRepository.getScheduleAll(LocalDate.now().toString() + "%").size
+            var taken = scheduleRepository.getScheduleTaken(LocalDate.now().toString() + "%").size
 
             withContext(Dispatchers.Main) {
                 tvProgress.text = "$taken/$total"
 
                 var progress = taken.toDouble() / total * 100
-                println("Progress = $progress")
                 progressBar.progress = progress.toInt()
 
             }
@@ -56,41 +62,33 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         chartCard.setOnClickListener {
             val chartFragment = ChartFragment()
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(((view as ViewGroup).parent as View).id, chartFragment, "profileFragment")
-                .addToBackStack(null)
-                .commit()
+                .replace(((view as ViewGroup).parent as View).id, chartFragment, "chartFragment")
+                .addToBackStack(null).commit()
         }
 
         viewChartBtn.setOnClickListener {
             val chartFragment = ChartFragment()
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(((view as ViewGroup).parent as View).id, chartFragment, "profileFragment")
-                .addToBackStack(null)
-                .commit()
+                .replace(((view as ViewGroup).parent as View).id, chartFragment, "chartFragment")
+                .addToBackStack(null).commit()
         }
 
         viewMedCard.setOnClickListener {
             val viewMedicationFragment = ViewMedicationFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                    ((view as ViewGroup).parent as View).id,
-                    viewMedicationFragment,
-                    "profileFragment"
-                )
-                .addToBackStack(null)
-                .commit()
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                ((view as ViewGroup).parent as View).id,
+                viewMedicationFragment,
+                "viewMedicationFragment"
+            ).addToBackStack(null).commit()
         }
 
         viewMedBtn.setOnClickListener {
             val viewMedicationFragment = ViewMedicationFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                    ((view as ViewGroup).parent as View).id,
-                    viewMedicationFragment,
-                    "profileFragment"
-                )
-                .addToBackStack(null)
-                .commit()
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                ((view as ViewGroup).parent as View).id,
+                viewMedicationFragment,
+                "viewMedicationFragment"
+            ).addToBackStack(null).commit()
         }
 
         addMedBtn.setOnClickListener {
@@ -100,26 +98,48 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         viewScheduleBtn.setOnClickListener {
             val todayScheduleFragment = TodayScheduleFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                    ((view as ViewGroup).parent as View).id,
-                    todayScheduleFragment,
-                    "profileFragment"
-                )
-                .addToBackStack(null)
-                .commit()
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                ((view as ViewGroup).parent as View).id,
+                todayScheduleFragment,
+                "todayScheduleFragment"
+            ).addToBackStack(null).commit()
         }
 
         viewScheduleCard.setOnClickListener {
             val todayScheduleFragment = TodayScheduleFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                    ((view as ViewGroup).parent as View).id,
-                    todayScheduleFragment,
-                    "profileFragment"
-                )
-                .addToBackStack(null)
-                .commit()
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                ((view as ViewGroup).parent as View).id,
+                todayScheduleFragment,
+                "todayScheduleFragment"
+            ).addToBackStack(null).commit()
+        }
+        sympcheck.setOnClickListener {
+            val intent = Intent(view.context, EyeTrackerMainActivity::class.java)
+            startActivity(intent)
+        }
+
+        symptestResult.setOnClickListener {
+            val intent = Intent(view.context, TestResultList::class.java)
+            startActivity(intent)
+        }
+
+        colorIdentifierBtn.setOnClickListener {
+            val intent = Intent(view.context, ColorIdentifierActivity::class.java)
+            startActivity(intent)
+        }
+        sympcheck.setOnClickListener {
+            val intent = Intent(view.context, EyeTrackerMainActivity::class.java)
+            startActivity(intent)
+        }
+
+        symptestResult.setOnClickListener {
+            val intent = Intent(view.context, TestResultList::class.java)
+            startActivity(intent)
+        }
+
+        colorIdentifierBtn.setOnClickListener{
+            val intent = Intent(view.context, ColorIdentifierActivity::class.java)
+            startActivity(intent)
         }
     }
 }

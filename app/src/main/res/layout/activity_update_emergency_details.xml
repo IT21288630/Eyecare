@@ -8,12 +8,12 @@
 
     <TextView
         android:id="@+id/EG_Heading_txt3"
-        android:layout_width="338dp"
+        android:layout_width="0dp"
         android:layout_height="53dp"
         android:layout_marginTop="36dp"
         android:gravity="center"
         android:text="@string/eyeGuardianPageTxtView"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
