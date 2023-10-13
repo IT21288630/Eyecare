@@ -133,7 +133,7 @@
     <EditText
         android:id="@+id/edtEmrgUpd"
         android:layout_width="257dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:minHeight="50dp"
         android:text=""
