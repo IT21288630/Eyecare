@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.eyecare.database.daos.checked_sympDao
+import com.example.eyecare.database.entities.SymptomEntity
 import com.example.eyecare.database.entities.checked_symp
 
-@Database(entities = [checked_symp::class], version = 1,
+@Database(entities = [checked_symp::class, SymptomEntity::class], version = 1,
 )
 abstract class checkboxDatabase : RoomDatabase() {
     abstract fun checked_sympDao():checked_sympDao

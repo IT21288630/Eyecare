@@ -7,21 +7,23 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eyecare.R
-import com.example.eyecare.activities.DisplaySymptomActivity
+import com.example.eyecare.database.SympDatabase
 import com.example.eyecare.database.checkboxDatabase
-import com.example.eyecare.database.daos.checked_sympDao
 import com.example.eyecare.database.entities.SymptomEntity
-import com.example.eyecare.database.entities.checked_symp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 //import com.example.eyecare.database.entities.checked_symp
 
 class SymptomAdapter(
     private val context: Context,
     private val symptoms: List<SymptomEntity>,
-    val database: checkboxDatabase,
+    val database: SympDatabase,
+    val db:checkboxDatabase
 
-    private var items: List<checked_symp> = emptyList(),
-    private var selectedSymptoms: MutableList<checked_symp> = mutableListOf()
+    //private var items: List<checked_symp> = emptyList(),
+   // private var selectedSymptoms: MutableList<checked_symp> = mutableListOf()
 
 
 
@@ -31,14 +33,13 @@ class SymptomAdapter(
 
 
 
+
+
     //var checked1 = mutableListOf<checked>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_symptom, parent, false)
-
-
-
 
         return ViewHolder(view)
     }
@@ -57,18 +58,16 @@ class SymptomAdapter(
 
           holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
               symptom.isChecked = isChecked
-
-              /*if (isChecked) {
-              } else {
-                 // selectedSymptoms.remove(symptom)
+              //val symp=checked_symp(symptom)
+              /*if(symptom.isChecked) {
+                  CoroutineScope(Dispatchers.IO).launch {
+                      db.checked_sympDao().insertCheckboxItem(symptom)
+                  }
               }*/
-
-
-
-
-
-
           }
+
+
+
 
       }
 

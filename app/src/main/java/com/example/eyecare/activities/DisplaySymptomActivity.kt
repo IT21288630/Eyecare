@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.eyecare.R
@@ -16,6 +17,10 @@ import com.example.eyecare.adapters.SymptomAdapter
 import com.example.eyecare.database.SympDatabase
 import com.example.eyecare.database.checkboxDatabase
 import com.example.eyecare.database.entities.SymptomEntity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 //import com.example.eyecare.database.checkboxDatabase.Companion.MIGRATION_1_2
 
@@ -45,13 +50,13 @@ class DisplaySymptomActivity : AppCompatActivity() {
 
         val database = Room.databaseBuilder(
             this,
-            checkboxDatabase::class.java, "checkedDatabase"
+            checkboxDatabase::class.java, "SympDatabase"
         )
             .fallbackToDestructiveMigration()
             .build()
 
         recyclerView = findViewById(R.id.recyclerView)
-        symptomAdapter = SymptomAdapter(this, read_json(this),database)
+        symptomAdapter = SymptomAdapter(this, read_json(this),db,database)
         recyclerView.adapter = symptomAdapter
 
 
@@ -61,11 +66,32 @@ class DisplaySymptomActivity : AppCompatActivity() {
         }
 
 
+        var results :Int= 0
         btn=findViewById(R.id.submit)
+
         btn.setOnClickListener {
             val intent = Intent(this, com.example.eyecare.activities.EyeTest_Result::class.java)
             startActivity(intent)
         }
+
+        /*
+        CoroutineScope(Dispatchers.IO).launch{
+           results=database.checked_sympDao().checkedItems()
+        }
+        if(results!=0) (
+                btn.setOnClickListener {
+                    val intent = Intent(this, com.example.eyecare.activities.EyeTest_Result::class.java)
+                    startActivity(intent)
+                }
+         )
+        else{
+            btn.setOnClickListener{
+                showToast("Select Symptoms")
+            }*/
+        }
+
+
+
 
 
 
@@ -92,6 +118,8 @@ class DisplaySymptomActivity : AppCompatActivity() {
 
         return symptomsList
     }
+    /*private fun showToast(message: String) {
+        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+    }*/
 
 
-}
