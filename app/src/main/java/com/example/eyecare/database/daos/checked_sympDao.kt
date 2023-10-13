@@ -1,15 +1,13 @@
 package com.example.eyecare.database.daos
 
-import android.database.Cursor
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.eyecare.database.entities.checked_symp
+import com.example.eyecare.database.entities.SymptomEntity
 
 @Dao
 interface checked_sympDao {
 
     @Insert
-    fun insertCheckboxItem(checkboxItem: checked_symp)
+    fun insertCheckboxItem(checkboxItem: SymptomEntity)
 
     /*//@Update
     //suspend fun updateCheckboxItem(checkboxItem: checked_symp)
@@ -22,4 +20,7 @@ interface checked_sympDao {
 
     @Query("SELECT name FROM checked_items")
     fun getSymptoms(): List<String>
+
+    @Query("SELECT COUNT(name) FROM checked_items")
+    fun checkedItems():Int
 }

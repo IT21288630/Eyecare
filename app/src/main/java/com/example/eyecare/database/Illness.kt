@@ -33,9 +33,6 @@ class IllnessChecker(context: Context ) {
     fun findMostSuitableIllness(illSymptoms: List<String>): Illness? {
 
 
-
-
-
         var bestMatch: Illness? = null
         var bestScore = Int.MAX_VALUE
 
