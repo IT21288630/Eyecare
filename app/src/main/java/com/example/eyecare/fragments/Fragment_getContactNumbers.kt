@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.example.eyecare.R
 import com.example.eyecare.activities.EyeGuardianServiceActivity
 
@@ -57,10 +58,20 @@ class Fragment_getContactNumbers : Fragment() {
             emergContact2 = view?.findViewById<EditText>(R.id.getContactNo2Edt)?.text.toString()
             emergContact3 = view?.findViewById<EditText>(R.id.getContactNo3Edt)?.text.toString()
 
-            parentActivity?.saveEmergNo(emergContact1,emergContact2,emergContact3)
-            //Calling the next fragment
-            parentActivity?.callCustomMsgFrag()
+            if (isPhoneNumberValid(emergContact1) && isPhoneNumberValid(emergContact2) && isPhoneNumberValid(emergContact3)) {
+                parentActivity?.saveEmergNo(emergContact1, emergContact2, emergContact3)
+                parentActivity?.callCustomMsgFrag()
+            } else {
+
+                Toast.makeText(requireContext(), "Invalid phone number format", Toast.LENGTH_LONG).show()
+            }
+
         }
+    }
+
+    fun isPhoneNumberValid(phone: String): Boolean {
+        val pattern = Regex("^[+]?[0-9]{10,13}$")
+        return pattern.matches(phone)
     }
 
     companion object {
