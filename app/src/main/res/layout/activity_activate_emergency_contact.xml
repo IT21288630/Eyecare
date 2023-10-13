@@ -22,7 +22,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="64dp"
       android:backgroundTint="@color/black"
-      android:gravity="center_horizontal"
+
       android:text="@string/activatedHeadTxtLeft"
       android:textAlignment="viewEnd"
       android:textSize="44sp"
@@ -39,7 +39,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="64dp"
       android:backgroundTint="@color/Red"
-      android:gravity="center_horizontal"
+
       android:text="@string/activatedHeadTxtRight"
       android:textAlignment="viewStart"
       android:textColor="@color/Red"
