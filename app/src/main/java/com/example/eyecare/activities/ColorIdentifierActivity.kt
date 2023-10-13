@@ -44,6 +44,11 @@ class ColorIdentifierActivity : AppCompatActivity() {
 
             if (ContextCompat.checkSelfPermission(this@ColorIdentifierActivity, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this@ColorIdentifierActivity, arrayOf(android.Manifest.permission.CAMERA), REQUEST_IMAGE_CAPTURE)
+
+                val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                if (takePictureIntent.resolveActivity(packageManager) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                }
             } else {
                 val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 if (takePictureIntent.resolveActivity(packageManager) != null) {
